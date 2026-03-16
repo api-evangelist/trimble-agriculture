@@ -4,32 +4,41 @@ description: >-
   The Trimble Agriculture Cloud is an independent, brand agnostic platform that
   connects infield devices and operational workflows, to more efficiently
   execute crop production plans and collect the most robust dataset in the
-  industry. 
+  industry.
 type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
+  - Agriculture
+  - Farming
+  - IoT
 created: '2025-02-06'
-modified: '2025-02-06'
+modified: '2026-03-16'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/trimble-agriculture/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
   - aid: trimble-agriculture:trimble-agriculture
-    name: Trimble Agriculture
+    name: Trimble Agriculture API
     description: >-
-      The Trimble Agriculture Cloud is an independent, brand agnostic platform
-      that connects infield devices and operational workflows, to more
-      efficiently execute crop production plans and collect the most robust
-      dataset in the industry. 
-    humanURL: ' https://agdeveloper.trimble.com/api-docs'
+      The Trimble Agriculture Cloud API connects infield devices and operational
+      workflows to execute crop production plans.
+    humanURL: https://agdeveloper.trimble.com/api-docs
     tags:
-      - API
+      - Agriculture
+      - Farming
+      - IoT
     properties:
       - type: Documentation
-        url: ' https://agdeveloper.trimble.com/api-docs'
+        url: https://agdeveloper.trimble.com/api-docs
+common:
+  - type: Website
+    url: https://agriculture.trimble.com/
+  - type: Documentation
+    url: https://agdeveloper.trimble.com/api-docs
+  - type: Sign Up
+    url: https://agdeveloper.trimble.com/
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
