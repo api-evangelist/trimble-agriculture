@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/trimble-agriculture/main/json-schema/trimble-agriculture-activity-schema.json",
+  "title": "Trimble Agriculture Equipment Activity",
+  "description": "An in-field equipment activity recorded from a Trimble precision ag display",
+  "type": "object",
+  "required": ["id", "activityType"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique activity identifier"
+    },
+    "activityType": {
+      "type": "string",
+      "enum": ["Planting", "Fertilizing", "Spraying", "Harvesting", "Tillage", "Irrigation"],
+      "description": "Type of in-field operation"
+    },
+    "cropZoneId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Crop zone where the activity was performed"
+    },
+    "operatorId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Operator who performed the activity"
+    },
+    "equipmentId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Equipment used for the activity"
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Activity start time (ISO 8601 UTC)"
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Activity end time (ISO 8601 UTC)"
+    },
+    "area": {
+      "type": "number",
+      "format": "float",
+      "minimum": 0,
+      "description": "Area covered by the activity in hectares"
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "materialId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "applicationRate": {
+            "type": "number",
+            "description": "Application rate per unit area"
+          },
+          "unit": {
+            "type": "string",
+            "description": "Application rate unit (e.g., kg/ha, L/ha, seeds/ha)"
+          }
+        }
+      },
+      "description": "Materials applied during the activity"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["InProgress", "Completed", "Cancelled"],
+      "description": "Activity completion status"
+    }
+  }
+}

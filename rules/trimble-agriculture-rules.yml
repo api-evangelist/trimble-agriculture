@@ -1,0 +1,127 @@
+extends: spectral:oas
+rules:
+
+  # All operations must have operationId
+  trimble-ag-operation-id-required:
+    description: All operations must have a camelCase operationId
+    message: "Operation is missing operationId"
+    severity: error
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: operationId
+      function: truthy
+
+  # Operations must use camelCase identifiers
+  trimble-ag-operation-id-camel-case:
+    description: Operation IDs must use camelCase
+    message: "operationId '{{value}}' must use camelCase"
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  # Organization ID must be first path parameter for all resource paths
+  trimble-ag-organization-context:
+    description: All resource paths must be scoped under an organizationId
+    message: "Path '{{value}}' should begin with /organizations/{organizationId}"
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/organizations/\\{organizationId\\}"
+
+  # Path parameters must be required
+  trimble-ag-path-params-required:
+    description: Path parameters must be marked as required
+    message: "Path parameter must have required: true"
+    severity: error
+    given: "$.paths[*][*].parameters[?(@.in == 'path')]"
+    then:
+      field: required
+      function: truthy
+
+  # IDs should use UUID format
+  trimble-ag-uuid-format:
+    description: ID parameters should specify uuid format
+    message: "ID parameter '{{value}}' should have format: uuid"
+    severity: hint
+    given: "$.paths[*][*].parameters[?(@.name =~ /Id$/)]"
+    then:
+      field: schema.format
+      function: enumeration
+      functionOptions:
+        values:
+          - uuid
+
+  # All operations must have tags
+  trimble-ag-operation-tags-required:
+    description: All operations must have at least one tag
+    message: "Operation must have at least one tag"
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: tags
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          minItems: 1
+
+  # All operations must define a 200 response
+  trimble-ag-response-200-required:
+    description: All operations must define a 200 success response
+    message: "Operation is missing a 200 success response"
+    severity: error
+    given: "$.paths[*][get,post,put,delete,patch].responses"
+    then:
+      field: "200"
+      function: truthy
+
+  # Bearer auth must be defined
+  trimble-ag-bearer-auth:
+    description: API must use bearer authentication
+    message: "Security scheme must use type: http with scheme: bearer"
+    severity: error
+    given: "$.components.securitySchemes[*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            type:
+              const: http
+            scheme:
+              const: bearer
+
+  # GeoJSON geometry should reference the GeoJsonGeometry schema
+  trimble-ag-geojson-geometry:
+    description: Boundary and geometry fields should reference GeoJsonGeometry
+    message: "Geometry field should use GeoJSON format with type and coordinates"
+    severity: hint
+    given: "$.components.schemas[*].properties[?(@property == 'boundary' || @property == 'geometry')]"
+    then:
+      function: truthy
+
+  # POST operations creating resources should document input schema
+  trimble-ag-post-has-request-body:
+    description: POST operations must have a request body
+    message: "POST operation must define a requestBody"
+    severity: error
+    given: "$.paths[*].post"
+    then:
+      field: requestBody
+      function: truthy
+
+  # Date/time parameters must use ISO 8601 format
+  trimble-ag-datetime-format:
+    description: Date-time parameters must specify format date-time
+    message: "DateTime parameter should have format: date-time"
+    severity: warn
+    given: "$.paths[*][*].parameters[?(@.name =~ /Date$|Time$/)]"
+    then:
+      field: schema.format
+      function: truthy

@@ -1,0 +1,134 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "agri": "http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "trimble-ag": "https://cloud.api.trimble.com/vocab/agriculture/",
+
+    "Organization": "schema:Organization",
+    "Farm": "schema:Place",
+    "Field": "trimble-ag:Field",
+    "CropZone": "trimble-ag:CropZone",
+    "EquipmentActivity": "trimble-ag:EquipmentActivity",
+    "WorkOrder": "trimble-ag:WorkOrder",
+    "Prescription": "trimble-ag:Prescription",
+    "Material": "schema:Product",
+    "Boundary": "geo:Feature",
+
+    "id": {
+      "@id": "@id"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+
+    "farmId": {
+      "@id": "trimble-ag:farmId",
+      "@type": "xsd:string"
+    },
+    "fieldId": {
+      "@id": "trimble-ag:fieldId",
+      "@type": "xsd:string"
+    },
+    "organizationId": {
+      "@id": "trimble-ag:organizationId",
+      "@type": "xsd:string"
+    },
+    "cropZoneId": {
+      "@id": "trimble-ag:cropZoneId",
+      "@type": "xsd:string"
+    },
+
+    "season": {
+      "@id": "trimble-ag:season",
+      "@type": "xsd:integer"
+    },
+    "cropType": {
+      "@id": "trimble-ag:cropType",
+      "@type": "xsd:string"
+    },
+    "variety": {
+      "@id": "trimble-ag:variety",
+      "@type": "xsd:string"
+    },
+    "area": {
+      "@id": "schema:area"
+    },
+    "boundary": {
+      "@id": "geo:hasGeometry"
+    },
+    "geometry": {
+      "@id": "geo:asWKT"
+    },
+
+    "activityType": {
+      "@id": "trimble-ag:activityType",
+      "@type": "xsd:string"
+    },
+    "startTime": {
+      "@id": "schema:startDate",
+      "@type": "xsd:dateTime"
+    },
+    "endTime": {
+      "@id": "schema:endDate",
+      "@type": "xsd:dateTime"
+    },
+    "status": {
+      "@id": "trimble-ag:status",
+      "@type": "xsd:string"
+    },
+    "materials": {
+      "@id": "trimble-ag:materials",
+      "@container": "@set"
+    },
+    "applicationRate": {
+      "@id": "trimble-ag:applicationRate",
+      "@type": "xsd:float"
+    },
+    "unit": {
+      "@id": "schema:unitText",
+      "@type": "xsd:string"
+    },
+
+    "materialType": {
+      "@id": "trimble-ag:materialType",
+      "@type": "xsd:string"
+    },
+    "manufacturer": {
+      "@id": "schema:manufacturer"
+    },
+
+    "assignedOperatorId": {
+      "@id": "trimble-ag:assignedOperatorId",
+      "@type": "xsd:string"
+    },
+    "scheduledDate": {
+      "@id": "schema:scheduledTime",
+      "@type": "xsd:date"
+    },
+
+    "country": {
+      "@id": "schema:addressCountry",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "schema:addressRegion",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "schema:addressLocality",
+      "@type": "xsd:string"
+    },
+    "address": {
+      "@id": "schema:streetAddress",
+      "@type": "xsd:string"
+    }
+  }
+}

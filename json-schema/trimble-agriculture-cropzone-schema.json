@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/trimble-agriculture/main/json-schema/trimble-agriculture-cropzone-schema.json",
+  "title": "Trimble Agriculture Crop Zone",
+  "description": "A crop zone organizing crop information by field and season in the Trimble Agriculture Cloud",
+  "type": "object",
+  "required": ["id", "fieldId", "season", "cropType"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique crop zone identifier"
+    },
+    "fieldId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Field that contains this crop zone"
+    },
+    "farmId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Farm that contains the parent field"
+    },
+    "season": {
+      "type": "integer",
+      "minimum": 1900,
+      "maximum": 2100,
+      "description": "Crop year (e.g., 2026)"
+    },
+    "cropType": {
+      "type": "string",
+      "description": "Crop being grown (e.g., Corn, Soybeans, Wheat, Cotton)"
+    },
+    "variety": {
+      "type": "string",
+      "description": "Crop variety or hybrid name"
+    },
+    "area": {
+      "type": "number",
+      "format": "float",
+      "minimum": 0,
+      "description": "Crop zone area in hectares"
+    },
+    "boundary": {
+      "$ref": "#/definitions/GeoJsonGeometry",
+      "description": "Crop zone boundary as GeoJSON geometry"
+    }
+  },
+  "definitions": {
+    "GeoJsonGeometry": {
+      "type": "object",
+      "description": "GeoJSON geometry object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["Polygon", "MultiPolygon"]
+        },
+        "coordinates": {
+          "type": "array",
+          "description": "GeoJSON coordinate array"
+        }
+      }
+    }
+  }
+}

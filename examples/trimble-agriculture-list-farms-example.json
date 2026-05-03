@@ -1,0 +1,32 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/org-uuid-001/farms",
+    "headers": {
+      "Authorization": "Bearer YOUR_ACCESS_TOKEN"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "id": "farm-uuid-001",
+        "name": "Johnson North Farm",
+        "organizationId": "org-uuid-001",
+        "address": "1234 County Road 50",
+        "city": "Ames",
+        "state": "IA",
+        "country": "US"
+      },
+      {
+        "id": "farm-uuid-002",
+        "name": "Johnson South Farm",
+        "organizationId": "org-uuid-001",
+        "address": "5678 County Road 50",
+        "city": "Ames",
+        "state": "IA",
+        "country": "US"
+      }
+    ]
+  }
+}

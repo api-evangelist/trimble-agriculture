@@ -1,0 +1,24 @@
+{
+  "title": "Trimble Agriculture Crop Zone Structure",
+  "description": "Structure documentation for Trimble Agriculture crop zone entities",
+  "structure": {
+    "id": "string (UUID) — Unique crop zone identifier",
+    "fieldId": "string (UUID) — Parent field identifier",
+    "farmId": "string (UUID) — Parent farm identifier",
+    "season": "integer — Crop year (e.g., 2026)",
+    "cropType": "string — Crop species (Corn, Soybeans, Wheat, Cotton, etc.)",
+    "variety": "string — Crop variety or hybrid designation",
+    "area": "number — Zone area in hectares",
+    "boundary": {
+      "type": "string — GeoJSON geometry type (Polygon, MultiPolygon)",
+      "coordinates": "array — GeoJSON coordinate rings in WGS84 (EPSG:4326)"
+    }
+  },
+  "notes": [
+    "A crop zone represents the crop planted in a specific field area for a specific season",
+    "Multiple crop zones can exist in a single field (for split-field planting)",
+    "Boundaries use WGS84 (EPSG:4326) coordinate reference system",
+    "Area is calculated from the boundary geometry",
+    "season field is the calendar year of the primary crop growth period"
+  ]
+}

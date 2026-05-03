@@ -1,0 +1,1357 @@
+openapi: 3.0.3
+info:
+  title: Trimble Agriculture Data API
+  description: >-
+    The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints
+    for managing farms, fields, crop zones, boundaries, equipment activities, work orders,
+    prescriptions, materials, and imagery. Enables third-party integrators to exchange
+    precision agriculture data between field devices and farm management platforms.
+    Serves over 180 million customer acres globally. Access requires registration at
+    the Trimble Ag Developer Network.
+  version: 3.0.0
+  contact:
+    url: https://agdeveloper.trimble.com/
+    email: ag_api@trimble.com
+servers:
+  - url: https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0
+    description: Trimble Agriculture Cloud API
+security:
+  - bearerAuth: []
+paths:
+
+  # ── Organizations ──────────────────────────────────────────────────
+  /organizations:
+    get:
+      operationId: listOrganizations
+      summary: List Organizations
+      description: Returns a list of organizations the authenticated user can access.
+      tags:
+        - Organizations
+      responses:
+        '200':
+          description: List of organizations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Organization'
+        '401':
+          description: Unauthorized
+
+  /organizations/{organizationId}:
+    get:
+      operationId: getOrganizationById
+      summary: Get Organization
+      description: Retrieve details for a specific organization.
+      tags:
+        - Organizations
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: Organization unique identifier
+      responses:
+        '200':
+          description: Organization details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+        '404':
+          description: Organization not found
+
+  # ── Farms ──────────────────────────────────────────────────────────
+  /organizations/{organizationId}/farms:
+    get:
+      operationId: listFarms
+      summary: List Farms
+      description: Returns all farms for an organization.
+      tags:
+        - Farms
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of farms
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Farm'
+    post:
+      operationId: createFarm
+      summary: Create Farm
+      description: Create a new farm within an organization.
+      tags:
+        - Farms
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FarmInput'
+      responses:
+        '201':
+          description: Farm created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+        '200':
+          description: Farm created (alternate success)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+
+  /organizations/{organizationId}/farms/{farmId}:
+    get:
+      operationId: getFarmById
+      summary: Get Farm
+      description: Retrieve details for a specific farm.
+      tags:
+        - Farms
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: farmId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Farm details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+    put:
+      operationId: updateFarm
+      summary: Update Farm
+      description: Update a farm's details.
+      tags:
+        - Farms
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: farmId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FarmInput'
+      responses:
+        '200':
+          description: Farm updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+    delete:
+      operationId: deleteFarm
+      summary: Delete Farm
+      description: Delete a farm from an organization.
+      tags:
+        - Farms
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: farmId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Farm deleted
+
+  # ── Fields ─────────────────────────────────────────────────────────
+  /organizations/{organizationId}/farms/{farmId}/fields:
+    get:
+      operationId: listFields
+      summary: List Fields
+      description: Returns all fields for a farm.
+      tags:
+        - Fields
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: farmId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of fields
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Field'
+    post:
+      operationId: createField
+      summary: Create Field
+      description: Create a new field within a farm.
+      tags:
+        - Fields
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: farmId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FieldInput'
+      responses:
+        '200':
+          description: Field created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
+
+  /organizations/{organizationId}/farms/{farmId}/fields/{fieldId}:
+    get:
+      operationId: getFieldById
+      summary: Get Field
+      description: Retrieve details for a specific field.
+      tags:
+        - Fields
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: farmId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: fieldId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Field details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
+    put:
+      operationId: updateField
+      summary: Update Field
+      description: Update a field's details or boundary geometry.
+      tags:
+        - Fields
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: farmId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: fieldId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FieldInput'
+      responses:
+        '200':
+          description: Field updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
+    delete:
+      operationId: deleteField
+      summary: Delete Field
+      description: Delete a field from a farm.
+      tags:
+        - Fields
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: farmId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: fieldId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Field deleted
+
+  # ── Crop Zones ─────────────────────────────────────────────────────
+  /organizations/{organizationId}/cropzones:
+    get:
+      operationId: listCropZones
+      summary: List Crop Zones
+      description: Returns crop zones for an organization. Crop zones organize crop information by field and season.
+      tags:
+        - Crop Zones
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: season
+          in: query
+          schema:
+            type: integer
+          description: Filter by crop year/season
+        - name: farmId
+          in: query
+          schema:
+            type: string
+            format: uuid
+          description: Filter by farm
+        - name: fieldId
+          in: query
+          schema:
+            type: string
+            format: uuid
+          description: Filter by field
+      responses:
+        '200':
+          description: List of crop zones
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CropZone'
+    post:
+      operationId: createCropZone
+      summary: Create Crop Zone
+      description: Create a new crop zone for a field and season.
+      tags:
+        - Crop Zones
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CropZoneInput'
+      responses:
+        '200':
+          description: Crop zone created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CropZone'
+
+  /organizations/{organizationId}/cropzones/{cropZoneId}:
+    get:
+      operationId: getCropZoneById
+      summary: Get Crop Zone
+      description: Retrieve details for a specific crop zone.
+      tags:
+        - Crop Zones
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: cropZoneId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Crop zone details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CropZone'
+
+  # ── Equipment Activities ───────────────────────────────────────────
+  /organizations/{organizationId}/equipmentactivities:
+    get:
+      operationId: listEquipmentActivities
+      summary: List Equipment Activities
+      description: >-
+        Returns equipment activity records (in-field jobs such as planting,
+        fertilizing, spraying, or harvesting) created from precision ag displays.
+      tags:
+        - Equipment Activities
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: startDate
+          in: query
+          schema:
+            type: string
+            format: date-time
+          description: Filter activities starting after this time
+        - name: endDate
+          in: query
+          schema:
+            type: string
+            format: date-time
+          description: Filter activities ending before this time
+        - name: cropZoneId
+          in: query
+          schema:
+            type: string
+            format: uuid
+          description: Filter by crop zone
+        - name: activityType
+          in: query
+          schema:
+            type: string
+            enum: [Planting, Fertilizing, Spraying, Harvesting, Tillage, Irrigation]
+          description: Filter by activity type
+      responses:
+        '200':
+          description: List of equipment activities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EquipmentActivity'
+
+  /organizations/{organizationId}/equipmentactivities/{activityId}:
+    get:
+      operationId: getEquipmentActivityById
+      summary: Get Equipment Activity
+      description: Retrieve details and as-applied data for a specific equipment activity.
+      tags:
+        - Equipment Activities
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Equipment activity details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EquipmentActivity'
+
+  /organizations/{organizationId}/equipmentactivities/{activityId}/asapplied:
+    get:
+      operationId: getAsAppliedData
+      summary: Get As-Applied Data
+      description: >-
+        Download as-applied data for a specific equipment activity in a
+        format suitable for third-party analysis or regulatory compliance.
+      tags:
+        - Equipment Activities
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: activityId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: format
+          in: query
+          schema:
+            type: string
+            enum: [json, geojson, shapefile]
+          description: Download format
+      responses:
+        '200':
+          description: As-applied data download
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsAppliedData'
+
+  # ── Work Orders ────────────────────────────────────────────────────
+  /organizations/{organizationId}/workorders:
+    get:
+      operationId: listWorkOrders
+      summary: List Work Orders
+      description: Returns work orders for an organization.
+      tags:
+        - Work Orders
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [Planned, Assigned, InProgress, Completed, Cancelled]
+          description: Filter by work order status
+      responses:
+        '200':
+          description: List of work orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkOrder'
+    post:
+      operationId: createWorkOrder
+      summary: Create Work Order
+      description: >-
+        Create a work order to plan, assign, and communicate a job to farm
+        equipment operators. Work orders can remotely preconfigure Precision-IQ
+        Display tasks.
+      tags:
+        - Work Orders
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkOrderInput'
+      responses:
+        '200':
+          description: Work order created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkOrder'
+
+  /organizations/{organizationId}/workorders/{workOrderId}:
+    get:
+      operationId: getWorkOrderById
+      summary: Get Work Order
+      description: Retrieve details for a specific work order.
+      tags:
+        - Work Orders
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: workOrderId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Work order details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkOrder'
+    put:
+      operationId: updateWorkOrder
+      summary: Update Work Order
+      description: Update a work order's status or details.
+      tags:
+        - Work Orders
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: workOrderId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkOrderInput'
+      responses:
+        '200':
+          description: Work order updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkOrder'
+
+  # ── Prescriptions ──────────────────────────────────────────────────
+  /organizations/{organizationId}/prescriptions:
+    get:
+      operationId: listPrescriptions
+      summary: List Prescriptions
+      description: Returns prescription files for an organization.
+      tags:
+        - Prescriptions
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: cropZoneId
+          in: query
+          schema:
+            type: string
+            format: uuid
+          description: Filter by crop zone
+      responses:
+        '200':
+          description: List of prescriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Prescription'
+    post:
+      operationId: createPrescription
+      summary: Create Prescription
+      description: >-
+        Upload a prescription file to be sent to Trimble displays for
+        variable-rate application in the field.
+      tags:
+        - Prescriptions
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrescriptionInput'
+      responses:
+        '200':
+          description: Prescription created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prescription'
+
+  /organizations/{organizationId}/prescriptions/{prescriptionId}:
+    get:
+      operationId: getPrescriptionById
+      summary: Get Prescription
+      description: Retrieve a specific prescription file.
+      tags:
+        - Prescriptions
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: prescriptionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Prescription details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prescription'
+    delete:
+      operationId: deletePrescription
+      summary: Delete Prescription
+      description: Delete a prescription file.
+      tags:
+        - Prescriptions
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: prescriptionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Prescription deleted
+
+  # ── Materials ──────────────────────────────────────────────────────
+  /organizations/{organizationId}/materials:
+    get:
+      operationId: listMaterials
+      summary: List Materials
+      description: Returns materials (seeds, fertilizers, chemicals) for an organization.
+      tags:
+        - Materials
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [Seed, Fertilizer, Chemical, Other]
+          description: Filter by material type
+      responses:
+        '200':
+          description: List of materials
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Material'
+    post:
+      operationId: createMaterial
+      summary: Create Material
+      description: Add a material to the organization's product library.
+      tags:
+        - Materials
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaterialInput'
+      responses:
+        '200':
+          description: Material created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Material'
+
+  # ── Imagery ────────────────────────────────────────────────────────
+  /organizations/{organizationId}/imagery:
+    get:
+      operationId: listImagery
+      summary: List Imagery
+      description: Returns uploaded GeoTIFF imagery processed for crop zones.
+      tags:
+        - Imagery
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: cropZoneId
+          in: query
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of imagery records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ImageryRecord'
+    post:
+      operationId: uploadImagery
+      summary: Upload Imagery
+      description: >-
+        Upload a GeoTIFF image. It will be processed and clipped to any crop
+        zones whose boundaries overlap the imagery area.
+      tags:
+        - Imagery
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: GeoTIFF image file
+                name:
+                  type: string
+                  description: Image name
+                date:
+                  type: string
+                  format: date
+                  description: Date the imagery was captured
+      responses:
+        '200':
+          description: Imagery uploaded and queued for processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageryRecord'
+
+  # ── Boundaries ─────────────────────────────────────────────────────
+  /organizations/{organizationId}/boundaries:
+    get:
+      operationId: listBoundaries
+      summary: List Boundaries
+      description: Returns all field and crop zone boundaries for an organization.
+      tags:
+        - Boundaries
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: fieldId
+          in: query
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of boundaries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Boundary'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        OAuth 2.0 bearer token. Register at agdeveloper.trimble.com to obtain
+        API credentials.
+
+  schemas:
+    Organization:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Organization unique identifier
+        name:
+          type: string
+          description: Organization display name
+        country:
+          type: string
+          description: Country code (ISO 3166-1 alpha-2)
+
+    Farm:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: Farm name
+        organizationId:
+          type: string
+          format: uuid
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+
+    FarmInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+
+    Field:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: Field name
+        farmId:
+          type: string
+          format: uuid
+        area:
+          type: number
+          format: float
+          description: Field area in hectares
+        boundary:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+          description: Field boundary as GeoJSON geometry
+
+    FieldInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+        area:
+          type: number
+          format: float
+        boundary:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+
+    CropZone:
+      type: object
+      required: [id, fieldId, season]
+      properties:
+        id:
+          type: string
+          format: uuid
+        fieldId:
+          type: string
+          format: uuid
+        farmId:
+          type: string
+          format: uuid
+        season:
+          type: integer
+          description: Crop year (e.g., 2026)
+        cropType:
+          type: string
+          description: Crop being grown (e.g., Corn, Soybeans, Wheat)
+        variety:
+          type: string
+          description: Crop variety or hybrid
+        area:
+          type: number
+          format: float
+          description: Crop zone area in hectares
+        boundary:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+
+    CropZoneInput:
+      type: object
+      required: [fieldId, season, cropType]
+      properties:
+        fieldId:
+          type: string
+          format: uuid
+        season:
+          type: integer
+        cropType:
+          type: string
+        variety:
+          type: string
+        boundary:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+
+    EquipmentActivity:
+      type: object
+      required: [id, activityType]
+      properties:
+        id:
+          type: string
+          format: uuid
+        activityType:
+          type: string
+          enum: [Planting, Fertilizing, Spraying, Harvesting, Tillage, Irrigation]
+          description: Type of in-field operation
+        cropZoneId:
+          type: string
+          format: uuid
+        operatorId:
+          type: string
+          format: uuid
+        equipmentId:
+          type: string
+          format: uuid
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        area:
+          type: number
+          format: float
+          description: Area covered in hectares
+        materials:
+          type: array
+          items:
+            type: object
+            properties:
+              materialId:
+                type: string
+                format: uuid
+              applicationRate:
+                type: number
+                description: Application rate per unit area
+              unit:
+                type: string
+        status:
+          type: string
+          enum: [InProgress, Completed, Cancelled]
+
+    AsAppliedData:
+      type: object
+      properties:
+        activityId:
+          type: string
+          format: uuid
+        format:
+          type: string
+        data:
+          description: GeoJSON or other format data for as-applied records
+        downloadUrl:
+          type: string
+          format: uri
+          description: Presigned URL to download the full dataset
+
+    WorkOrder:
+      type: object
+      required: [id, title, status]
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+          description: Work order title or name
+        description:
+          type: string
+        status:
+          type: string
+          enum: [Planned, Assigned, InProgress, Completed, Cancelled]
+        cropZoneId:
+          type: string
+          format: uuid
+        assignedOperatorId:
+          type: string
+          format: uuid
+        activityType:
+          type: string
+          description: Type of operation to perform
+        scheduledDate:
+          type: string
+          format: date
+        materials:
+          type: array
+          items:
+            type: object
+            properties:
+              materialId:
+                type: string
+                format: uuid
+              targetRate:
+                type: number
+
+    WorkOrderInput:
+      type: object
+      required: [title, cropZoneId, activityType]
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        cropZoneId:
+          type: string
+          format: uuid
+        assignedOperatorId:
+          type: string
+          format: uuid
+        activityType:
+          type: string
+        scheduledDate:
+          type: string
+          format: date
+        materials:
+          type: array
+          items:
+            type: object
+
+    Prescription:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: Prescription file name
+        cropZoneId:
+          type: string
+          format: uuid
+        materialType:
+          type: string
+          enum: [Seed, Fertilizer, Chemical]
+        fileUrl:
+          type: string
+          format: uri
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum: [Active, Sent, Archived]
+
+    PrescriptionInput:
+      type: object
+      required: [name, cropZoneId, materialType]
+      properties:
+        name:
+          type: string
+        cropZoneId:
+          type: string
+          format: uuid
+        materialType:
+          type: string
+          enum: [Seed, Fertilizer, Chemical]
+        prescription:
+          description: GeoJSON variable-rate prescription data
+
+    Material:
+      type: object
+      required: [id, name, type]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: Material/product name
+        type:
+          type: string
+          enum: [Seed, Fertilizer, Chemical, Other]
+        manufacturer:
+          type: string
+        registrationNumber:
+          type: string
+        unit:
+          type: string
+          description: Default application unit (e.g., kg/ha, L/ha, seeds/ha)
+
+    MaterialInput:
+      type: object
+      required: [name, type]
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum: [Seed, Fertilizer, Chemical, Other]
+        manufacturer:
+          type: string
+        unit:
+          type: string
+
+    Boundary:
+      type: object
+      required: [id]
+      properties:
+        id:
+          type: string
+          format: uuid
+        fieldId:
+          type: string
+          format: uuid
+        cropZoneId:
+          type: string
+          format: uuid
+        geometry:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+        area:
+          type: number
+          format: float
+          description: Boundary area in hectares
+
+    ImageryRecord:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        date:
+          type: string
+          format: date
+          description: Date imagery was captured
+        status:
+          type: string
+          enum: [Processing, Processed, Failed]
+        cropZones:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Crop zones that overlap this imagery
+
+    GeoJsonGeometry:
+      type: object
+      description: GeoJSON geometry object
+      properties:
+        type:
+          type: string
+          enum: [Point, Polygon, MultiPolygon, LineString]
+        coordinates:
+          description: GeoJSON coordinates array

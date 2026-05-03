@@ -1,0 +1,103 @@
+vocabulary:
+  name: Trimble Agriculture Vocabulary
+  description: >-
+    Domain vocabulary for the Trimble Agriculture Cloud API (PTxAg FarmENGAGE).
+    Covers precision agriculture concepts including farm hierarchy, crop zone
+    management, equipment activities, variable-rate prescriptions, and data workflows.
+  version: "1.0.0"
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+domains:
+  - name: Farm Hierarchy
+    description: Organizational structure for agricultural data
+    terms:
+      - term: Organization
+        definition: The top-level entity in the Trimble Agriculture hierarchy, representing a farming business, agronomist practice, or cooperative
+        synonyms: [client, company, grower account]
+      - term: Farm
+        definition: A named grouping of fields under an organization, typically representing a geographic operation unit
+        synonyms: [operation, farm unit, production unit]
+      - term: Field
+        definition: A discrete land parcel with defined boundaries used for crop production
+        synonyms: [parcel, paddock, tract, land parcel]
+      - term: Crop Zone
+        definition: >-
+          A subdivision of a field organized by crop and season. Crop zones include the
+          crop type, boundary for that crop, and all tasks occurring in that growing season.
+        synonyms: [management zone, crop area, planting zone]
+      - term: Season
+        definition: The calendar year associated with a crop's primary growth period
+        synonyms: [crop year, growing season, production year]
+
+  - name: In-Field Operations
+    description: Equipment activities and operational data
+    terms:
+      - term: Equipment Activity
+        definition: >-
+          A recorded in-field job (planting, fertilizing, spraying, harvesting, etc.)
+          created from a Trimble Precision-IQ or compatible precision ag display.
+        synonyms: [field activity, task record, machine operation, job record]
+      - term: Activity Type
+        definition: The classification of an in-field operation (Planting, Fertilizing, Spraying, Harvesting, Tillage, Irrigation)
+        synonyms: [operation type, task type, job type]
+      - term: As-Applied Data
+        definition: >-
+          Geo-referenced records of what was actually applied in the field (rates,
+          materials, coverage) as captured by the precision ag display during an activity.
+          Used for compliance reporting, regulatory documentation, and yield analysis.
+        synonyms: [as-applied map, field data, application data, machine data]
+      - term: Work Order
+        definition: >-
+          A planned field job that can be assigned to operators and communicated to
+          Trimble Precision-IQ displays for in-field execution. Can remotely preconfigure
+          display tasks with material rates, boundaries, and recommendations.
+        synonyms: [task assignment, field instruction, job order]
+
+  - name: Precision Agriculture
+    description: Variable-rate and prescription farming concepts
+    terms:
+      - term: Prescription
+        definition: >-
+          A geo-referenced variable-rate application plan specifying how much
+          material (seed, fertilizer, chemical) to apply at each location in a field.
+          Prescriptions can be sent from third-party platforms to Trimble displays.
+        synonyms: [VRA prescription, variable-rate map, application map, Rx map]
+      - term: Variable-Rate Application
+        definition: The practice of applying field inputs at rates that vary across a field based on prescription zones
+        synonyms: [VRA, variable rate, site-specific management]
+      - term: Material
+        definition: An agricultural input product such as seed, fertilizer, or chemical used in field operations
+        synonyms: [product, input, agrochemical, crop protection product]
+      - term: Application Rate
+        definition: The quantity of a material applied per unit area during a field operation
+        synonyms: [rate, dose, loading]
+
+  - name: Spatial Data
+    description: Geographic and boundary data concepts
+    terms:
+      - term: Boundary
+        definition: A GeoJSON polygon or multi-polygon defining the geographic extent of a field, crop zone, or management area
+        synonyms: [field boundary, polygon, geometry, extent]
+      - term: Guidance Line
+        definition: A virtual line or curve used by GPS-guided equipment to maintain consistent passes across a field
+        synonyms: [AB line, swath guidance, track line]
+      - term: Landmark
+        definition: A named geographic feature within or near a field (buildings, water features, obstacles) used for navigation reference
+        synonyms: [feature, point of interest, waypoint]
+      - term: GeoTIFF
+        definition: A georeferenced raster image format used for satellite/aerial imagery and processed prescription maps
+        synonyms: [geotiff, raster image, georeferenced image]
+
+  - name: Integration
+    description: API integration and developer concepts
+    terms:
+      - term: Precision-IQ
+        definition: Trimble's primary precision agriculture field display for planting, spraying, harvesting, and guidance
+        synonyms: [display, terminal, in-cab display, field computer]
+      - term: FarmENGAGE
+        definition: The Trimble Agriculture platform (formerly Trimble Ag Software) integrating cloud data, field displays, and API connectivity
+        synonyms: [PTxAg FarmENGAGE, Trimble Ag Cloud, agriculture cloud]
+      - term: Telematics
+        definition: Remote monitoring of equipment position, status, and operational metrics via cellular or satellite connectivity
+        synonyms: [fleet telematics, equipment tracking, remote monitoring]

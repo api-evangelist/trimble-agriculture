@@ -1,0 +1,43 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/org-uuid-001/workorders",
+    "headers": {
+      "Authorization": "Bearer YOUR_ACCESS_TOKEN",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "title": "North Field Herbicide Application",
+      "description": "Apply pre-emergent herbicide to north corn fields",
+      "cropZoneId": "cropzone-uuid-001",
+      "assignedOperatorId": "operator-uuid-001",
+      "activityType": "Spraying",
+      "scheduledDate": "2026-05-10",
+      "materials": [
+        {
+          "materialId": "material-uuid-002",
+          "targetRate": 2.5
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "workorder-uuid-001",
+      "title": "North Field Herbicide Application",
+      "description": "Apply pre-emergent herbicide to north corn fields",
+      "status": "Planned",
+      "cropZoneId": "cropzone-uuid-001",
+      "assignedOperatorId": "operator-uuid-001",
+      "activityType": "Spraying",
+      "scheduledDate": "2026-05-10",
+      "materials": [
+        {
+          "materialId": "material-uuid-002",
+          "targetRate": 2.5
+        }
+      ]
+    }
+  }
+}

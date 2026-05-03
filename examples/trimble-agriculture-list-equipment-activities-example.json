@@ -1,0 +1,32 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/org-uuid-001/equipmentactivities?activityType=Planting&startDate=2026-04-15T00:00:00Z",
+    "headers": {
+      "Authorization": "Bearer YOUR_ACCESS_TOKEN"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "id": "activity-uuid-001",
+        "activityType": "Planting",
+        "cropZoneId": "cropzone-uuid-001",
+        "operatorId": "operator-uuid-001",
+        "equipmentId": "equipment-uuid-001",
+        "startTime": "2026-04-20T08:00:00Z",
+        "endTime": "2026-04-20T16:30:00Z",
+        "area": 45.3,
+        "materials": [
+          {
+            "materialId": "material-uuid-001",
+            "applicationRate": 32000,
+            "unit": "seeds/ha"
+          }
+        ],
+        "status": "Completed"
+      }
+    ]
+  }
+}
