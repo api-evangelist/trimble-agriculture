@@ -1,319 +1,547 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Trimble Agriculture Precision Farming"
-  description: >-
-    Unified precision farming capability combining farm setup, field management,
-    crop zone tracking, equipment activity monitoring, work order dispatch, and
-    prescription management. Powers agricultural data workflows for agronomists,
+  label: Trimble Agriculture Precision Farming
+  description: Unified precision farming capability combining farm setup, field management, crop zone tracking, equipment
+    activity monitoring, work order dispatch, and prescription management. Powers agricultural data workflows for agronomists,
     custom applicators, and farm management platforms.
   tags:
-    - Trimble Agriculture
-    - Precision Agriculture
-    - Farming
-    - Field Management
-    - Prescriptions
-    - Work Orders
-    - Equipment Activities
-    - IoT
-  created: "2026-05-03"
-  modified: "2026-05-03"
-
+  - Trimble Agriculture
+  - Precision Agriculture
+  - Farming
+  - Field Management
+  - Prescriptions
+  - Work Orders
+  - Equipment Activities
+  - IoT
+  created: '2026-05-03'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      TRIMBLE_AG_ACCESS_TOKEN: TRIMBLE_AG_ACCESS_TOKEN
-
+- namespace: env
+  keys:
+    TRIMBLE_AG_ACCESS_TOKEN: TRIMBLE_AG_ACCESS_TOKEN
 capability:
   consumes:
-    - import: trimble-ag
-      location: ./shared/trimble-agriculture.yaml
-
+  - type: http
+    namespace: trimble-ag
+    baseUri: https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0
+    description: Trimble Agriculture Cloud REST API for precision farming data
+    authentication:
+      type: bearer
+      token: '{{TRIMBLE_AG_ACCESS_TOKEN}}'
+    resources:
+    - name: farms
+      path: /organizations/{organizationId}/farms
+      description: Farm management
+      operations:
+      - name: list-farms
+        method: GET
+        description: List farms for an organization
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+          description: Organization identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-farm
+        method: GET
+        description: Get farm details
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: farmId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-farm
+        method: POST
+        description: Create a new farm
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        body:
+          type: json
+          data:
+            name: '{{tools.name}}'
+            address: '{{tools.address}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: fields
+      path: /organizations/{organizationId}/farms/{farmId}/fields
+      description: Field management
+      operations:
+      - name: list-fields
+        method: GET
+        description: List fields for a farm
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: farmId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-field
+        method: POST
+        description: Create a new field with optional boundary
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: farmId
+          in: path
+          type: string
+          required: true
+        body:
+          type: json
+          data:
+            name: '{{tools.name}}'
+            boundary: '{{tools.boundary}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: crop-zones
+      path: /organizations/{organizationId}/cropzones
+      description: Crop zone management
+      operations:
+      - name: list-crop-zones
+        method: GET
+        description: List crop zones for an organization
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: season
+          in: query
+          type: integer
+          required: false
+        - name: fieldId
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: equipment-activities
+      path: /organizations/{organizationId}/equipmentactivities
+      description: Equipment activity data from precision ag displays
+      operations:
+      - name: list-equipment-activities
+        method: GET
+        description: List equipment activities (planting, spraying, harvesting, etc.)
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: activityType
+          in: query
+          type: string
+          required: false
+        - name: startDate
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-as-applied-data
+        method: GET
+        description: Download as-applied data for an equipment activity
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: activityId
+          in: path
+          type: string
+          required: true
+        - name: format
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: work-orders
+      path: /organizations/{organizationId}/workorders
+      description: Work order planning and assignment
+      operations:
+      - name: list-work-orders
+        method: GET
+        description: List work orders
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: status
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-work-order
+        method: POST
+        description: Create a work order for farm operators
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        body:
+          type: json
+          data:
+            title: '{{tools.title}}'
+            cropZoneId: '{{tools.cropZoneId}}'
+            activityType: '{{tools.activityType}}'
+            scheduledDate: '{{tools.scheduledDate}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: prescriptions
+      path: /organizations/{organizationId}/prescriptions
+      description: Prescription file management
+      operations:
+      - name: list-prescriptions
+        method: GET
+        description: List prescriptions
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-prescription
+        method: POST
+        description: Upload a prescription for variable-rate field application
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        body:
+          type: json
+          data:
+            name: '{{tools.name}}'
+            cropZoneId: '{{tools.cropZoneId}}'
+            materialType: '{{tools.materialType}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: precision-farming-api
-      description: "Unified REST API for Trimble Agriculture precision farming operations."
-      resources:
-        - path: /v1/farms
-          name: farms
-          description: Farm registry
-          operations:
-            - method: GET
-              name: list-farms
-              description: List all farms for an organization
-              call: "trimble-ag.list-farms"
-              with:
-                organizationId: "rest.organizationId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-farm
-              description: Add a new farm to an organization
-              call: "trimble-ag.create-farm"
-              with:
-                organizationId: "rest.organizationId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/fields
-          name: fields
-          description: Field management
-          operations:
-            - method: GET
-              name: list-fields
-              description: List all fields in a farm
-              call: "trimble-ag.list-fields"
-              with:
-                organizationId: "rest.organizationId"
-                farmId: "rest.farmId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-field
-              description: Create a new field with boundary
-              call: "trimble-ag.create-field"
-              with:
-                organizationId: "rest.organizationId"
-                farmId: "rest.farmId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/crop-zones
-          name: crop-zones
-          description: Crop zone tracking by season
-          operations:
-            - method: GET
-              name: list-crop-zones
-              description: List crop zones for an organization and season
-              call: "trimble-ag.list-crop-zones"
-              with:
-                organizationId: "rest.organizationId"
-                season: "rest.season"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/equipment-activities
-          name: equipment-activities
-          description: In-field equipment activities from precision ag displays
-          operations:
-            - method: GET
-              name: list-equipment-activities
-              description: List equipment activities (planting, spraying, harvesting)
-              call: "trimble-ag.list-equipment-activities"
-              with:
-                organizationId: "rest.organizationId"
-                activityType: "rest.activityType"
-                startDate: "rest.startDate"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/equipment-activities/{activityId}/as-applied
-          name: as-applied-data
-          description: As-applied data from field operations
-          operations:
-            - method: GET
-              name: get-as-applied-data
-              description: Download as-applied data for compliance and analysis
-              call: "trimble-ag.get-as-applied-data"
-              with:
-                organizationId: "rest.organizationId"
-                activityId: "rest.activityId"
-                format: "rest.format"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/work-orders
-          name: work-orders
-          description: Work order planning and dispatch
-          operations:
-            - method: GET
-              name: list-work-orders
-              description: List work orders with status filtering
-              call: "trimble-ag.list-work-orders"
-              with:
-                organizationId: "rest.organizationId"
-                status: "rest.status"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-work-order
-              description: Create a work order for farm operators
-              call: "trimble-ag.create-work-order"
-              with:
-                organizationId: "rest.organizationId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/prescriptions
-          name: prescriptions
-          description: Variable-rate prescription management
-          operations:
-            - method: GET
-              name: list-prescriptions
-              description: List prescription files
-              call: "trimble-ag.list-prescriptions"
-              with:
-                organizationId: "rest.organizationId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-prescription
-              description: Upload a prescription for Trimble display delivery
-              call: "trimble-ag.create-prescription"
-              with:
-                organizationId: "rest.organizationId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: precision-farming-mcp
-      transport: http
-      description: "MCP server for AI-assisted precision agriculture data management."
-      tools:
-        - name: list-farms
-          description: List all farms for a Trimble Agriculture organization
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "trimble-ag.list-farms"
-          with:
-            organizationId: "tools.organizationId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: create-farm
-          description: Add a new farm to a Trimble Agriculture organization
-          hints:
-            readOnly: false
-            openWorld: false
-          call: "trimble-ag.create-farm"
-          with:
-            organizationId: "tools.organizationId"
-            name: "tools.name"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: list-fields
-          description: List all fields in a farm with their boundaries
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "trimble-ag.list-fields"
-          with:
-            organizationId: "tools.organizationId"
-            farmId: "tools.farmId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: list-crop-zones
-          description: List crop zones for a growing season
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "trimble-ag.list-crop-zones"
-          with:
-            organizationId: "tools.organizationId"
-            season: "tools.season"
-            fieldId: "tools.fieldId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: list-equipment-activities
-          description: List in-field equipment activities (planting, spraying, harvesting)
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "trimble-ag.list-equipment-activities"
-          with:
-            organizationId: "tools.organizationId"
-            activityType: "tools.activityType"
-            startDate: "tools.startDate"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-as-applied-data
-          description: Download as-applied field data for compliance and productivity analysis
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "trimble-ag.get-as-applied-data"
-          with:
-            organizationId: "tools.organizationId"
-            activityId: "tools.activityId"
-            format: "tools.format"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: list-work-orders
-          description: List farm work orders and their completion status
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "trimble-ag.list-work-orders"
-          with:
-            organizationId: "tools.organizationId"
-            status: "tools.status"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: create-work-order
-          description: Create a work order to assign field jobs to farm operators
-          hints:
-            readOnly: false
-            openWorld: false
-          call: "trimble-ag.create-work-order"
-          with:
-            organizationId: "tools.organizationId"
-            title: "tools.title"
-            cropZoneId: "tools.cropZoneId"
-            activityType: "tools.activityType"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: list-prescriptions
-          description: List variable-rate prescription files for crop zones
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "trimble-ag.list-prescriptions"
-          with:
-            organizationId: "tools.organizationId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: create-prescription
-          description: Upload a variable-rate prescription to send to Trimble field displays
-          hints:
-            readOnly: false
-            openWorld: false
-          call: "trimble-ag.create-prescription"
-          with:
-            organizationId: "tools.organizationId"
-            name: "tools.name"
-            cropZoneId: "tools.cropZoneId"
-            materialType: "tools.materialType"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: precision-farming-api
+    description: Unified REST API for Trimble Agriculture precision farming operations.
+    resources:
+    - path: /v1/farms
+      name: farms
+      description: Farm registry
+      operations:
+      - method: GET
+        name: list-farms
+        description: List all farms for an organization
+        call: trimble-ag.list-farms
+        with:
+          organizationId: rest.organizationId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-farm
+        description: Add a new farm to an organization
+        call: trimble-ag.create-farm
+        with:
+          organizationId: rest.organizationId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/fields
+      name: fields
+      description: Field management
+      operations:
+      - method: GET
+        name: list-fields
+        description: List all fields in a farm
+        call: trimble-ag.list-fields
+        with:
+          organizationId: rest.organizationId
+          farmId: rest.farmId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-field
+        description: Create a new field with boundary
+        call: trimble-ag.create-field
+        with:
+          organizationId: rest.organizationId
+          farmId: rest.farmId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/crop-zones
+      name: crop-zones
+      description: Crop zone tracking by season
+      operations:
+      - method: GET
+        name: list-crop-zones
+        description: List crop zones for an organization and season
+        call: trimble-ag.list-crop-zones
+        with:
+          organizationId: rest.organizationId
+          season: rest.season
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/equipment-activities
+      name: equipment-activities
+      description: In-field equipment activities from precision ag displays
+      operations:
+      - method: GET
+        name: list-equipment-activities
+        description: List equipment activities (planting, spraying, harvesting)
+        call: trimble-ag.list-equipment-activities
+        with:
+          organizationId: rest.organizationId
+          activityType: rest.activityType
+          startDate: rest.startDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/equipment-activities/{activityId}/as-applied
+      name: as-applied-data
+      description: As-applied data from field operations
+      operations:
+      - method: GET
+        name: get-as-applied-data
+        description: Download as-applied data for compliance and analysis
+        call: trimble-ag.get-as-applied-data
+        with:
+          organizationId: rest.organizationId
+          activityId: rest.activityId
+          format: rest.format
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/work-orders
+      name: work-orders
+      description: Work order planning and dispatch
+      operations:
+      - method: GET
+        name: list-work-orders
+        description: List work orders with status filtering
+        call: trimble-ag.list-work-orders
+        with:
+          organizationId: rest.organizationId
+          status: rest.status
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-work-order
+        description: Create a work order for farm operators
+        call: trimble-ag.create-work-order
+        with:
+          organizationId: rest.organizationId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/prescriptions
+      name: prescriptions
+      description: Variable-rate prescription management
+      operations:
+      - method: GET
+        name: list-prescriptions
+        description: List prescription files
+        call: trimble-ag.list-prescriptions
+        with:
+          organizationId: rest.organizationId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-prescription
+        description: Upload a prescription for Trimble display delivery
+        call: trimble-ag.create-prescription
+        with:
+          organizationId: rest.organizationId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: precision-farming-mcp
+    transport: http
+    description: MCP server for AI-assisted precision agriculture data management.
+    tools:
+    - name: list-farms
+      description: List all farms for a Trimble Agriculture organization
+      hints:
+        readOnly: true
+        openWorld: false
+      call: trimble-ag.list-farms
+      with:
+        organizationId: tools.organizationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-farm
+      description: Add a new farm to a Trimble Agriculture organization
+      hints:
+        readOnly: false
+        openWorld: false
+      call: trimble-ag.create-farm
+      with:
+        organizationId: tools.organizationId
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-fields
+      description: List all fields in a farm with their boundaries
+      hints:
+        readOnly: true
+        openWorld: false
+      call: trimble-ag.list-fields
+      with:
+        organizationId: tools.organizationId
+        farmId: tools.farmId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-crop-zones
+      description: List crop zones for a growing season
+      hints:
+        readOnly: true
+        openWorld: false
+      call: trimble-ag.list-crop-zones
+      with:
+        organizationId: tools.organizationId
+        season: tools.season
+        fieldId: tools.fieldId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-equipment-activities
+      description: List in-field equipment activities (planting, spraying, harvesting)
+      hints:
+        readOnly: true
+        openWorld: false
+      call: trimble-ag.list-equipment-activities
+      with:
+        organizationId: tools.organizationId
+        activityType: tools.activityType
+        startDate: tools.startDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-as-applied-data
+      description: Download as-applied field data for compliance and productivity analysis
+      hints:
+        readOnly: true
+        openWorld: false
+      call: trimble-ag.get-as-applied-data
+      with:
+        organizationId: tools.organizationId
+        activityId: tools.activityId
+        format: tools.format
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-work-orders
+      description: List farm work orders and their completion status
+      hints:
+        readOnly: true
+        openWorld: false
+      call: trimble-ag.list-work-orders
+      with:
+        organizationId: tools.organizationId
+        status: tools.status
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-work-order
+      description: Create a work order to assign field jobs to farm operators
+      hints:
+        readOnly: false
+        openWorld: false
+      call: trimble-ag.create-work-order
+      with:
+        organizationId: tools.organizationId
+        title: tools.title
+        cropZoneId: tools.cropZoneId
+        activityType: tools.activityType
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-prescriptions
+      description: List variable-rate prescription files for crop zones
+      hints:
+        readOnly: true
+        openWorld: false
+      call: trimble-ag.list-prescriptions
+      with:
+        organizationId: tools.organizationId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-prescription
+      description: Upload a variable-rate prescription to send to Trimble field displays
+      hints:
+        readOnly: false
+        openWorld: false
+      call: trimble-ag.create-prescription
+      with:
+        organizationId: tools.organizationId
+        name: tools.name
+        cropZoneId: tools.cropZoneId
+        materialType: tools.materialType
+      outputParameters:
+      - type: object
+        mapping: $.
