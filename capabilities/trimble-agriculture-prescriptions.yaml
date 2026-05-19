@@ -1,0 +1,213 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Trimble Agriculture Data API — Prescriptions
+  description: 'Trimble Agriculture Data API — Prescriptions. 4 operations. Lead operation: List Prescriptions. Self-contained
+    Naftiko capability covering one Trimble Agriculture business surface.'
+  tags:
+  - Trimble Agriculture
+  - Prescriptions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TRIMBLE_AGRICULTURE_API_KEY: TRIMBLE_AGRICULTURE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: trimble-agriculture-prescriptions
+    baseUri: https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0
+    description: Trimble Agriculture Data API — Prescriptions business capability. Self-contained, no shared references.
+    resources:
+    - name: organizations-organizationId-prescriptions
+      path: /organizations/{organizationId}/prescriptions
+      operations:
+      - name: listprescriptions
+        method: GET
+        description: List Prescriptions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: cropZoneId
+          in: query
+          type: string
+          description: Filter by crop zone
+      - name: createprescription
+        method: POST
+        description: Create Prescription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: organizations-organizationId-prescriptions-prescriptionId
+      path: /organizations/{organizationId}/prescriptions/{prescriptionId}
+      operations:
+      - name: getprescriptionbyid
+        method: GET
+        description: Get Prescription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: prescriptionId
+          in: path
+          type: string
+          required: true
+      - name: deleteprescription
+        method: DELETE
+        description: Delete Prescription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: prescriptionId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TRIMBLE_AGRICULTURE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: trimble-agriculture-prescriptions-rest
+    port: 8080
+    description: REST adapter for Trimble Agriculture Data API — Prescriptions. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/organizations/{organizationid}/prescriptions
+      name: organizations-organizationid-prescriptions
+      description: REST surface for organizations-organizationId-prescriptions.
+      operations:
+      - method: GET
+        name: listprescriptions
+        description: List Prescriptions
+        call: trimble-agriculture-prescriptions.listprescriptions
+        with:
+          organizationId: rest.organizationId
+          cropZoneId: rest.cropZoneId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createprescription
+        description: Create Prescription
+        call: trimble-agriculture-prescriptions.createprescription
+        with:
+          organizationId: rest.organizationId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/organizations/{organizationid}/prescriptions/{prescriptionid}
+      name: organizations-organizationid-prescriptions-prescriptionid
+      description: REST surface for organizations-organizationId-prescriptions-prescriptionId.
+      operations:
+      - method: GET
+        name: getprescriptionbyid
+        description: Get Prescription
+        call: trimble-agriculture-prescriptions.getprescriptionbyid
+        with:
+          organizationId: rest.organizationId
+          prescriptionId: rest.prescriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteprescription
+        description: Delete Prescription
+        call: trimble-agriculture-prescriptions.deleteprescription
+        with:
+          organizationId: rest.organizationId
+          prescriptionId: rest.prescriptionId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: trimble-agriculture-prescriptions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Trimble Agriculture Data API — Prescriptions. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-prescriptions
+      description: List Prescriptions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: trimble-agriculture-prescriptions.listprescriptions
+      with:
+        organizationId: tools.organizationId
+        cropZoneId: tools.cropZoneId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-prescription
+      description: Create Prescription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: trimble-agriculture-prescriptions.createprescription
+      with:
+        organizationId: tools.organizationId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-prescription
+      description: Get Prescription
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: trimble-agriculture-prescriptions.getprescriptionbyid
+      with:
+        organizationId: tools.organizationId
+        prescriptionId: tools.prescriptionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-prescription
+      description: Delete Prescription
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: trimble-agriculture-prescriptions.deleteprescription
+      with:
+        organizationId: tools.organizationId
+        prescriptionId: tools.prescriptionId
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,185 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Trimble Agriculture Data API — Crop Zones
+  description: 'Trimble Agriculture Data API — Crop Zones. 3 operations. Lead operation: List Crop Zones. Self-contained Naftiko
+    capability covering one Trimble Agriculture business surface.'
+  tags:
+  - Trimble Agriculture
+  - Crop Zones
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TRIMBLE_AGRICULTURE_API_KEY: TRIMBLE_AGRICULTURE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: trimble-agriculture-crop-zones
+    baseUri: https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0
+    description: Trimble Agriculture Data API — Crop Zones business capability. Self-contained, no shared references.
+    resources:
+    - name: organizations-organizationId-cropzones
+      path: /organizations/{organizationId}/cropzones
+      operations:
+      - name: listcropzones
+        method: GET
+        description: List Crop Zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: season
+          in: query
+          type: integer
+          description: Filter by crop year/season
+        - name: farmId
+          in: query
+          type: string
+          description: Filter by farm
+        - name: fieldId
+          in: query
+          type: string
+          description: Filter by field
+      - name: createcropzone
+        method: POST
+        description: Create Crop Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: organizations-organizationId-cropzones-cropZoneId
+      path: /organizations/{organizationId}/cropzones/{cropZoneId}
+      operations:
+      - name: getcropzonebyid
+        method: GET
+        description: Get Crop Zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: cropZoneId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TRIMBLE_AGRICULTURE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: trimble-agriculture-crop-zones-rest
+    port: 8080
+    description: REST adapter for Trimble Agriculture Data API — Crop Zones. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/organizations/{organizationid}/cropzones
+      name: organizations-organizationid-cropzones
+      description: REST surface for organizations-organizationId-cropzones.
+      operations:
+      - method: GET
+        name: listcropzones
+        description: List Crop Zones
+        call: trimble-agriculture-crop-zones.listcropzones
+        with:
+          organizationId: rest.organizationId
+          season: rest.season
+          farmId: rest.farmId
+          fieldId: rest.fieldId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcropzone
+        description: Create Crop Zone
+        call: trimble-agriculture-crop-zones.createcropzone
+        with:
+          organizationId: rest.organizationId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/organizations/{organizationid}/cropzones/{cropzoneid}
+      name: organizations-organizationid-cropzones-cropzoneid
+      description: REST surface for organizations-organizationId-cropzones-cropZoneId.
+      operations:
+      - method: GET
+        name: getcropzonebyid
+        description: Get Crop Zone
+        call: trimble-agriculture-crop-zones.getcropzonebyid
+        with:
+          organizationId: rest.organizationId
+          cropZoneId: rest.cropZoneId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: trimble-agriculture-crop-zones-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Trimble Agriculture Data API — Crop Zones. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-crop-zones
+      description: List Crop Zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: trimble-agriculture-crop-zones.listcropzones
+      with:
+        organizationId: tools.organizationId
+        season: tools.season
+        farmId: tools.farmId
+        fieldId: tools.fieldId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-crop-zone
+      description: Create Crop Zone
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: trimble-agriculture-crop-zones.createcropzone
+      with:
+        organizationId: tools.organizationId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-crop-zone
+      description: Get Crop Zone
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: trimble-agriculture-crop-zones.getcropzonebyid
+      with:
+        organizationId: tools.organizationId
+        cropZoneId: tools.cropZoneId
+      outputParameters:
+      - type: object
+        mapping: $.

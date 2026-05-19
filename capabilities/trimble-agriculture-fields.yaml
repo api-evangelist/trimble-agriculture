@@ -1,0 +1,284 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Trimble Agriculture Data API — Fields
+  description: 'Trimble Agriculture Data API — Fields. 5 operations. Lead operation: List Fields. Self-contained Naftiko capability
+    covering one Trimble Agriculture business surface.'
+  tags:
+  - Trimble Agriculture
+  - Fields
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TRIMBLE_AGRICULTURE_API_KEY: TRIMBLE_AGRICULTURE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: trimble-agriculture-fields
+    baseUri: https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0
+    description: Trimble Agriculture Data API — Fields business capability. Self-contained, no shared references.
+    resources:
+    - name: organizations-organizationId-farms-farmId-fields
+      path: /organizations/{organizationId}/farms/{farmId}/fields
+      operations:
+      - name: listfields
+        method: GET
+        description: List Fields
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: farmId
+          in: path
+          type: string
+          required: true
+      - name: createfield
+        method: POST
+        description: Create Field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: farmId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: organizations-organizationId-farms-farmId-fields-fieldId
+      path: /organizations/{organizationId}/farms/{farmId}/fields/{fieldId}
+      operations:
+      - name: getfieldbyid
+        method: GET
+        description: Get Field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: farmId
+          in: path
+          type: string
+          required: true
+        - name: fieldId
+          in: path
+          type: string
+          required: true
+      - name: updatefield
+        method: PUT
+        description: Update Field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: farmId
+          in: path
+          type: string
+          required: true
+        - name: fieldId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletefield
+        method: DELETE
+        description: Delete Field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: farmId
+          in: path
+          type: string
+          required: true
+        - name: fieldId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TRIMBLE_AGRICULTURE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: trimble-agriculture-fields-rest
+    port: 8080
+    description: REST adapter for Trimble Agriculture Data API — Fields. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/organizations/{organizationid}/farms/{farmid}/fields
+      name: organizations-organizationid-farms-farmid-fields
+      description: REST surface for organizations-organizationId-farms-farmId-fields.
+      operations:
+      - method: GET
+        name: listfields
+        description: List Fields
+        call: trimble-agriculture-fields.listfields
+        with:
+          organizationId: rest.organizationId
+          farmId: rest.farmId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createfield
+        description: Create Field
+        call: trimble-agriculture-fields.createfield
+        with:
+          organizationId: rest.organizationId
+          farmId: rest.farmId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/organizations/{organizationid}/farms/{farmid}/fields/{fieldid}
+      name: organizations-organizationid-farms-farmid-fields-fieldid
+      description: REST surface for organizations-organizationId-farms-farmId-fields-fieldId.
+      operations:
+      - method: GET
+        name: getfieldbyid
+        description: Get Field
+        call: trimble-agriculture-fields.getfieldbyid
+        with:
+          organizationId: rest.organizationId
+          farmId: rest.farmId
+          fieldId: rest.fieldId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatefield
+        description: Update Field
+        call: trimble-agriculture-fields.updatefield
+        with:
+          organizationId: rest.organizationId
+          farmId: rest.farmId
+          fieldId: rest.fieldId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefield
+        description: Delete Field
+        call: trimble-agriculture-fields.deletefield
+        with:
+          organizationId: rest.organizationId
+          farmId: rest.farmId
+          fieldId: rest.fieldId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: trimble-agriculture-fields-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Trimble Agriculture Data API — Fields. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-fields
+      description: List Fields
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: trimble-agriculture-fields.listfields
+      with:
+        organizationId: tools.organizationId
+        farmId: tools.farmId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-field
+      description: Create Field
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: trimble-agriculture-fields.createfield
+      with:
+        organizationId: tools.organizationId
+        farmId: tools.farmId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-field
+      description: Get Field
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: trimble-agriculture-fields.getfieldbyid
+      with:
+        organizationId: tools.organizationId
+        farmId: tools.farmId
+        fieldId: tools.fieldId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-field
+      description: Update Field
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: trimble-agriculture-fields.updatefield
+      with:
+        organizationId: tools.organizationId
+        farmId: tools.farmId
+        fieldId: tools.fieldId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-field
+      description: Delete Field
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: trimble-agriculture-fields.deletefield
+      with:
+        organizationId: tools.organizationId
+        farmId: tools.farmId
+        fieldId: tools.fieldId
+      outputParameters:
+      - type: object
+        mapping: $.

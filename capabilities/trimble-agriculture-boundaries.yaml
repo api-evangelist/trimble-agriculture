@@ -1,0 +1,84 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Trimble Agriculture Data API — Boundaries
+  description: 'Trimble Agriculture Data API — Boundaries. 1 operations. Lead operation: List Boundaries. Self-contained Naftiko
+    capability covering one Trimble Agriculture business surface.'
+  tags:
+  - Trimble Agriculture
+  - Boundaries
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TRIMBLE_AGRICULTURE_API_KEY: TRIMBLE_AGRICULTURE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: trimble-agriculture-boundaries
+    baseUri: https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0
+    description: Trimble Agriculture Data API — Boundaries business capability. Self-contained, no shared references.
+    resources:
+    - name: organizations-organizationId-boundaries
+      path: /organizations/{organizationId}/boundaries
+      operations:
+      - name: listboundaries
+        method: GET
+        description: List Boundaries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organizationId
+          in: path
+          type: string
+          required: true
+        - name: fieldId
+          in: query
+          type: string
+    authentication:
+      type: bearer
+      token: '{{env.TRIMBLE_AGRICULTURE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: trimble-agriculture-boundaries-rest
+    port: 8080
+    description: REST adapter for Trimble Agriculture Data API — Boundaries. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/organizations/{organizationid}/boundaries
+      name: organizations-organizationid-boundaries
+      description: REST surface for organizations-organizationId-boundaries.
+      operations:
+      - method: GET
+        name: listboundaries
+        description: List Boundaries
+        call: trimble-agriculture-boundaries.listboundaries
+        with:
+          organizationId: rest.organizationId
+          fieldId: rest.fieldId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: trimble-agriculture-boundaries-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Trimble Agriculture Data API — Boundaries. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-boundaries
+      description: List Boundaries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: trimble-agriculture-boundaries.listboundaries
+      with:
+        organizationId: tools.organizationId
+        fieldId: tools.fieldId
+      outputParameters:
+      - type: object
+        mapping: $.
