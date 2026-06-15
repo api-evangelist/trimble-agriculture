@@ -1,11 +1,12 @@
 aid: trimble-agriculture
 name: Trimble Agriculture
-description: The Trimble Agriculture Cloud is an independent, brand-agnostic platform that connects infield devices and operational
-  workflows to more efficiently execute crop production plans and collect robust agricultural datasets. The Trimble Agriculture
-  API (now operating as PTxAg FarmENGAGE) provides REST APIs for farm setup, field boundaries, task records, work orders,
-  prescriptions, equipment activities, crop zones, materials, and telematics. It enables third-party integrators to exchange
-  as-applied data, send prescriptions to Trimble displays, and align field resources across precision agriculture systems.
-  The platform serves over 180 million customer acres globally.
+description: >-
+  The Trimble Agriculture Cloud is an independent, brand-agnostic platform that connects infield devices and operational
+  workflows to more efficiently execute crop production plans and collect robust agricultural datasets. The Trimble
+  Agriculture API (now operating as PTxAg FarmENGAGE) provides REST APIs for farm setup, field boundaries, task records,
+  work orders, prescriptions, equipment activities, crop zones, materials, and telematics. It enables third-party
+  integrators to exchange as-applied data, send prescriptions to Trimble displays, and align field resources across
+  precision agriculture systems. The platform serves over 180 million customer acres globally.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -25,61 +26,44 @@ specificationVersion: '0.19'
 apis:
   - aid: trimble-agriculture:trimble-agriculture-data
     name: Trimble Agriculture Data API
-    description: 'The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields,
-      crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party
-      integrators to exchange precision agriculture data between field devices and farm management platforms. Base URL: https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0'
+    description: >-
+      The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop
+      zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party
+      integrators to exchange precision agriculture data between field devices and farm management platforms. Base URL:
+      https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0
     humanURL: https://agdeveloper.trimble.com/api-docs
     tags:
-    - Agriculture
-    - Farming
-    - Field Management
-    - Prescriptions
-    - Equipment Activities
-    - Work Orders
-    - Crop Zones
-    - Boundaries
+      - Agriculture
+      - Farming
+      - Field Management
+      - Prescriptions
+      - Equipment Activities
+      - Work Orders
+      - Crop Zones
+      - Boundaries
     properties:
-    - type: Documentation
-      url: https://agdeveloper.trimble.com/api-docs
-    - type: GettingStarted
-      url: https://agdeveloper.trimble.com/
-    - type: OpenAPI
-      url: openapi/trimble-agriculture-openapi.yml
-    - type: NaftikoCapability
-      url: capabilities/trimble-agriculture-boundaries.yaml
-    - type: NaftikoCapability
-      url: capabilities/trimble-agriculture-crop-zones.yaml
-    - type: NaftikoCapability
-      url: capabilities/trimble-agriculture-equipment-activities.yaml
-    - type: NaftikoCapability
-      url: capabilities/trimble-agriculture-farms.yaml
-    - type: NaftikoCapability
-      url: capabilities/trimble-agriculture-fields.yaml
-    - type: NaftikoCapability
-      url: capabilities/trimble-agriculture-imagery.yaml
-    - type: NaftikoCapability
-      url: capabilities/trimble-agriculture-materials.yaml
-    - type: NaftikoCapability
-      url: capabilities/trimble-agriculture-organizations.yaml
-    - type: NaftikoCapability
-      url: capabilities/trimble-agriculture-prescriptions.yaml
-    - type: NaftikoCapability
-      url: capabilities/trimble-agriculture-work-orders.yaml
+      - type: Documentation
+        url: https://agdeveloper.trimble.com/api-docs
+      - type: GettingStarted
+        url: https://agdeveloper.trimble.com/
+      - type: OpenAPI
+        url: openapi/trimble-agriculture-openapi.yml
   - aid: trimble-agriculture:trimble-agriculture-telematics
     name: Trimble Agriculture Telematics API
-    description: The Trimble Agriculture Telematics API provides access to real-time and historical equipment telematics data
-      from connected Trimble displays and precision agriculture devices. Includes equipment location, status, and operational
+    description: >-
+      The Trimble Agriculture Telematics API provides access to real-time and historical equipment telematics data from
+      connected Trimble displays and precision agriculture devices. Includes equipment location, status, and operational
       metrics.
     humanURL: https://agdeveloper.trimble.com/api-docs
     tags:
-    - Agriculture
-    - Telematics
-    - IoT
-    - Equipment
-    - GPS
+      - Agriculture
+      - Telematics
+      - IoT
+      - Equipment
+      - GPS
     properties:
-    - type: Documentation
-      url: https://agdeveloper.trimble.com/api-docs
+      - type: Documentation
+        url: https://agdeveloper.trimble.com/api-docs
 features:
   - Farm, field, and crop zone management
   - Equipment activity data from precision ag displays

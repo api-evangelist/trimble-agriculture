@@ -1,0 +1,3964 @@
+{
+  "item": [
+    {
+      "id": "147d00c9-49ed-4915-8a99-073462c75407",
+      "name": "Organizations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3683258d-218e-455b-a696-5e08bc4240e3",
+          "name": "List Organizations",
+          "request": {
+            "name": "List Organizations",
+            "description": {
+              "content": "Returns a list of organizations the authenticated user can access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1aff686f-c2fa-40c1-878c-244e541d3d02",
+              "name": "List of organizations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"178cbe8e-93c2-6c3f-68fd-4e0950cf1be2\",\n    \"name\": \"string\",\n    \"country\": \"string\"\n  },\n  {\n    \"id\": \"7db82318-768e-1c09-f6bc-bb2e04b55ba6\",\n    \"name\": \"string\",\n    \"country\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70e09489-c3df-451b-b075-3eea7385137c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a32498f2-225b-4ae1-9eea-8b39241a0dff",
+          "name": "Get Organization",
+          "request": {
+            "name": "Get Organization",
+            "description": {
+              "content": "Retrieve details for a specific organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) Organization unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "70f9a65c-2fab-4da1-9d20-9ad5bdc838b3",
+              "name": "Organization details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) Organization unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"585d7aa7-5784-0636-0eb3-7769d8875ddd\",\n  \"name\": \"string\",\n  \"country\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57c11b82-f688-4c36-bcfd-c0a538dffa29",
+              "name": "Organization not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) Organization unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "15760faa-cbb2-4cff-b978-af8c18375d5c",
+      "name": "Farms",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ea896fcd-66a3-42d1-8177-309d37816bdd",
+          "name": "List Farms",
+          "request": {
+            "name": "List Farms",
+            "description": {
+              "content": "Returns all farms for an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "farms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "641a40de-e55d-4b26-b6e9-4af1fda904c6",
+              "name": "List of farms",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "farms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"b8c58101-55ae-7816-702c-b2a2e2113389\",\n    \"name\": \"string\",\n    \"organizationId\": \"af495dab-c369-d6c4-8c74-e095eb1b2bc8\",\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\"\n  },\n  {\n    \"id\": \"8ac6ee92-e1af-8b9c-f75f-d5336ae4c3e8\",\n    \"name\": \"string\",\n    \"organizationId\": \"6610562f-7cde-e05f-6a3d-69aab4e94706\",\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f27c88fa-d9ab-4fbd-80cb-0cd0e7032b17",
+          "name": "Create Farm",
+          "request": {
+            "name": "Create Farm",
+            "description": {
+              "content": "Create a new farm within an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "farms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "63c5d742-d47e-452e-b0d9-f7f88cd45c9d",
+              "name": "Farm created (alternate success)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "farms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8ac142d1-43f4-0cf8-9177-cd5a021b2266\",\n  \"name\": \"string\",\n  \"organizationId\": \"e8320acb-2067-192e-6731-39cff14a3c66\",\n  \"address\": \"string\",\n  \"city\": \"string\",\n  \"state\": \"string\",\n  \"country\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e20f09c6-d25d-45f8-97e3-9560dde5585a",
+              "name": "Farm created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "farms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8ac142d1-43f4-0cf8-9177-cd5a021b2266\",\n  \"name\": \"string\",\n  \"organizationId\": \"e8320acb-2067-192e-6731-39cff14a3c66\",\n  \"address\": \"string\",\n  \"city\": \"string\",\n  \"state\": \"string\",\n  \"country\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "904b3192-69cd-414a-a24d-23c3305d308c",
+          "name": "Get Farm",
+          "request": {
+            "name": "Get Farm",
+            "description": {
+              "content": "Retrieve details for a specific farm.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "farms",
+                ":farmId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "farmId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "71c73463-8563-464c-a9dd-0e11ad3dd18e",
+              "name": "Farm details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "farms",
+                    ":farmId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8ac142d1-43f4-0cf8-9177-cd5a021b2266\",\n  \"name\": \"string\",\n  \"organizationId\": \"e8320acb-2067-192e-6731-39cff14a3c66\",\n  \"address\": \"string\",\n  \"city\": \"string\",\n  \"state\": \"string\",\n  \"country\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "851adfe2-1cf3-42fa-aa6d-c35ae73bbc94",
+          "name": "Update Farm",
+          "request": {
+            "name": "Update Farm",
+            "description": {
+              "content": "Update a farm's details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "farms",
+                ":farmId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "farmId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "51c441f0-8786-479d-8105-d9421787ad61",
+              "name": "Farm updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "farms",
+                    ":farmId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8ac142d1-43f4-0cf8-9177-cd5a021b2266\",\n  \"name\": \"string\",\n  \"organizationId\": \"e8320acb-2067-192e-6731-39cff14a3c66\",\n  \"address\": \"string\",\n  \"city\": \"string\",\n  \"state\": \"string\",\n  \"country\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82a56710-5019-4689-acec-ca7ba3002868",
+          "name": "Delete Farm",
+          "request": {
+            "name": "Delete Farm",
+            "description": {
+              "content": "Delete a farm from an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "farms",
+                ":farmId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "farmId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fbc61e4e-bd3a-4504-91ab-d33022fe9ae0",
+              "name": "Farm deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "farms",
+                    ":farmId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "57bcdf19-ee4f-4b09-939d-18e9f8f3c78b",
+      "name": "Fields",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3cc7d45-5949-45f8-914b-185a9e3a2c51",
+          "name": "List Fields",
+          "request": {
+            "name": "List Fields",
+            "description": {
+              "content": "Returns all fields for a farm.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "farms",
+                ":farmId",
+                "fields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "farmId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "52c29e0c-1e38-46c4-9d00-173078e985fe",
+              "name": "List of fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "farms",
+                    ":farmId",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"5192491f-398a-1efa-c1fa-0ce7dd7a5d53\",\n    \"name\": \"string\",\n    \"farmId\": \"e309f606-b110-0bf6-f8f8-21c2c225b2c5\",\n    \"area\": 4771.103169290496,\n    \"boundary\": {\n      \"type\": \"<string>\",\n      \"coordinates\": {}\n    }\n  },\n  {\n    \"id\": \"357cb738-1c9b-8ff6-deca-b5a2ec4ba7eb\",\n    \"name\": \"string\",\n    \"farmId\": \"20b38ad8-2626-f5b1-b363-f21f4f98c43f\",\n    \"area\": 7132.252085917305,\n    \"boundary\": {\n      \"type\": \"<string>\",\n      \"coordinates\": {}\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6efd9926-ae98-41cb-8e58-9aead8599210",
+          "name": "Create Field",
+          "request": {
+            "name": "Create Field",
+            "description": {
+              "content": "Create a new field within a farm.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "farms",
+                ":farmId",
+                "fields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "farmId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"area\": \"<float>\",\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "927dd30e-c40c-4f98-b2de-35b356af240d",
+              "name": "Field created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "farms",
+                    ":farmId",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"area\": \"<float>\",\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7af44a8f-9c67-8074-e538-53975d465446\",\n  \"name\": \"string\",\n  \"farmId\": \"a6b77c2b-e952-c726-8308-c6641e2a2c3e\",\n  \"area\": 1785.2039698449885,\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ba489b0-f862-4d6c-a448-28dfccb1f970",
+          "name": "Get Field",
+          "request": {
+            "name": "Get Field",
+            "description": {
+              "content": "Retrieve details for a specific field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "farms",
+                ":farmId",
+                "fields",
+                ":fieldId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "farmId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "fieldId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e56e9ff7-7ecf-415d-b594-8bf7c07b52c2",
+              "name": "Field details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "farms",
+                    ":farmId",
+                    "fields",
+                    ":fieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "fieldId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7af44a8f-9c67-8074-e538-53975d465446\",\n  \"name\": \"string\",\n  \"farmId\": \"a6b77c2b-e952-c726-8308-c6641e2a2c3e\",\n  \"area\": 1785.2039698449885,\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb28719f-5d8f-4eea-af86-4114a6a379a9",
+          "name": "Update Field",
+          "request": {
+            "name": "Update Field",
+            "description": {
+              "content": "Update a field's details or boundary geometry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "farms",
+                ":farmId",
+                "fields",
+                ":fieldId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "farmId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "fieldId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"area\": \"<float>\",\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08212b4d-d298-428a-b2c7-18c6237edc36",
+              "name": "Field updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "farms",
+                    ":farmId",
+                    "fields",
+                    ":fieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "fieldId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"area\": \"<float>\",\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7af44a8f-9c67-8074-e538-53975d465446\",\n  \"name\": \"string\",\n  \"farmId\": \"a6b77c2b-e952-c726-8308-c6641e2a2c3e\",\n  \"area\": 1785.2039698449885,\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ccd1f4c-3799-4f15-b88b-e074cea4dfc9",
+          "name": "Delete Field",
+          "request": {
+            "name": "Delete Field",
+            "description": {
+              "content": "Delete a field from a farm.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "farms",
+                ":farmId",
+                "fields",
+                ":fieldId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "farmId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "fieldId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e655a171-5589-4926-9b31-bc5d4716cc52",
+              "name": "Field deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "farms",
+                    ":farmId",
+                    "fields",
+                    ":fieldId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "farmId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "fieldId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "36f4b8d2-7fd4-43a4-8864-8575c65c11e8",
+      "name": "Crop Zones",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "896dab30-6902-4043-a22b-7a581b26e781",
+          "name": "List Crop Zones",
+          "request": {
+            "name": "List Crop Zones",
+            "description": {
+              "content": "Returns crop zones for an organization. Crop zones organize crop information by field and season.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "cropzones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "season",
+                  "value": "<integer>",
+                  "description": "Filter by crop year/season"
+                },
+                {
+                  "disabled": false,
+                  "key": "farmId",
+                  "value": "<uuid>",
+                  "description": "Filter by farm"
+                },
+                {
+                  "disabled": false,
+                  "key": "fieldId",
+                  "value": "<uuid>",
+                  "description": "Filter by field"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48a071a0-83a4-487f-ac83-da7527d93331",
+              "name": "List of crop zones",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "cropzones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "season",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "farmId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "fieldId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"aaf39899-dd66-b67f-b9ad-d8c0120fcbf0\",\n    \"fieldId\": \"85dbb760-ad66-5298-8a7b-066c3b7831af\",\n    \"season\": 2359,\n    \"farmId\": \"d36260b6-0db9-217f-9a5a-5c19a5c8b4e7\",\n    \"cropType\": \"string\",\n    \"variety\": \"string\",\n    \"area\": 9138.732026748497,\n    \"boundary\": {\n      \"type\": \"MultiPolygon\",\n      \"coordinates\": {}\n    }\n  },\n  {\n    \"id\": \"b320f044-7027-177a-87b8-7bd31987907f\",\n    \"fieldId\": \"8e052be1-048f-61dd-8b03-ffc9f4885ab5\",\n    \"season\": 7710,\n    \"farmId\": \"1300d999-72af-82ca-6bb2-1ea74d88dc3d\",\n    \"cropType\": \"string\",\n    \"variety\": \"string\",\n    \"area\": 2802.172317671201,\n    \"boundary\": {\n      \"type\": \"Polygon\",\n      \"coordinates\": {}\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d5bc05a-6795-4e02-a2dc-ca184c53260c",
+          "name": "Create Crop Zone",
+          "request": {
+            "name": "Create Crop Zone",
+            "description": {
+              "content": "Create a new crop zone for a field and season.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "cropzones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fieldId\": \"<uuid>\",\n  \"season\": \"<integer>\",\n  \"cropType\": \"<string>\",\n  \"variety\": \"<string>\",\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "945b5c63-60ea-4fde-b732-45c890ee0fe7",
+              "name": "Crop zone created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "cropzones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fieldId\": \"<uuid>\",\n  \"season\": \"<integer>\",\n  \"cropType\": \"<string>\",\n  \"variety\": \"<string>\",\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a3eefcb0-606f-07d4-5b27-7ad791b1bfaa\",\n  \"fieldId\": \"777ab485-b55d-e0a8-699c-6d9818e0f762\",\n  \"season\": 3506,\n  \"farmId\": \"4cf05399-dbba-3af3-8563-9894af6b0355\",\n  \"cropType\": \"string\",\n  \"variety\": \"string\",\n  \"area\": 9588.90268239648,\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b5159d3-b995-4fe4-863e-cefa1312490d",
+          "name": "Get Crop Zone",
+          "request": {
+            "name": "Get Crop Zone",
+            "description": {
+              "content": "Retrieve details for a specific crop zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "cropzones",
+                ":cropZoneId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "cropZoneId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fda60bd4-9235-4bc4-9aa3-bafe8e2dce85",
+              "name": "Crop zone details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "cropzones",
+                    ":cropZoneId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "cropZoneId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a3eefcb0-606f-07d4-5b27-7ad791b1bfaa\",\n  \"fieldId\": \"777ab485-b55d-e0a8-699c-6d9818e0f762\",\n  \"season\": 3506,\n  \"farmId\": \"4cf05399-dbba-3af3-8563-9894af6b0355\",\n  \"cropType\": \"string\",\n  \"variety\": \"string\",\n  \"area\": 9588.90268239648,\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a6bf5c9f-ea51-4b7a-bb39-8df12bb24d59",
+      "name": "Equipment Activities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e15f55d2-901e-44cf-98fb-79f95e6d971b",
+          "name": "List Equipment Activities",
+          "request": {
+            "name": "List Equipment Activities",
+            "description": {
+              "content": "Returns equipment activity records (in-field jobs such as planting, fertilizing, spraying, or harvesting) created from precision ag displays.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "equipmentactivities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "Filter activities starting after this time"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "Filter activities ending before this time"
+                },
+                {
+                  "disabled": false,
+                  "key": "cropZoneId",
+                  "value": "<uuid>",
+                  "description": "Filter by crop zone"
+                },
+                {
+                  "disabled": false,
+                  "key": "activityType",
+                  "value": "<string>",
+                  "description": "Filter by activity type"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dac8f656-bf38-4351-9e26-e92615d817ef",
+              "name": "List of equipment activities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "equipmentactivities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cropZoneId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "activityType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"b8442e11-31b4-d686-8e12-93a2b474427e\",\n    \"activityType\": \"Irrigation\",\n    \"cropZoneId\": \"c8267d23-dd0a-197a-3bb0-371e03bf9457\",\n    \"operatorId\": \"7fd11087-784c-5cb1-3211-d2cb6dfb6be4\",\n    \"equipmentId\": \"09f857b3-ac05-41e5-2b6f-824d222c0c8e\",\n    \"startTime\": \"2018-02-15T06:08:24.977Z\",\n    \"endTime\": \"1980-12-05T13:30:12.659Z\",\n    \"area\": 9808.490121919685,\n    \"materials\": [\n      {\n        \"materialId\": \"884edaba-ad46-89c9-3395-06f2c842d20f\",\n        \"applicationRate\": 4683.058807125298,\n        \"unit\": \"string\"\n      },\n      {\n        \"materialId\": \"bb1292b1-8016-e830-758b-fb7786b4a39c\",\n        \"applicationRate\": 2245.790602472295,\n        \"unit\": \"string\"\n      }\n    ],\n    \"status\": \"InProgress\"\n  },\n  {\n    \"id\": \"9280df9b-cdab-c52a-3057-d75bc7da3e68\",\n    \"activityType\": \"Irrigation\",\n    \"cropZoneId\": \"4231ab12-8241-5992-98f7-62c71cf85c21\",\n    \"operatorId\": \"b1e94919-a10a-b778-8b94-c827d6e4c673\",\n    \"equipmentId\": \"a4f4c661-ff5a-f2fb-badb-cd26a7a34e2c\",\n    \"startTime\": \"1986-03-12T14:41:15.292Z\",\n    \"endTime\": \"1976-05-14T00:19:08.592Z\",\n    \"area\": 5409.385185605088,\n    \"materials\": [\n      {\n        \"materialId\": \"35cddb52-9c0c-bda7-1d7d-8c8a4c38fd3c\",\n        \"applicationRate\": 6264.251932627532,\n        \"unit\": \"string\"\n      },\n      {\n        \"materialId\": \"d631582a-6545-89da-eed4-6da0d78f87d6\",\n        \"applicationRate\": 7477.654062438845,\n        \"unit\": \"string\"\n      }\n    ],\n    \"status\": \"Completed\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4710a84a-9068-4e91-80bd-5b6f095781f5",
+          "name": "Get Equipment Activity",
+          "request": {
+            "name": "Get Equipment Activity",
+            "description": {
+              "content": "Retrieve details and as-applied data for a specific equipment activity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "equipmentactivities",
+                ":activityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "activityId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0105af84-b7a2-4dcc-beda-0e3f84c0dd46",
+              "name": "Equipment activity details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "equipmentactivities",
+                    ":activityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cdbb7382-ede6-93ce-cffe-a6043048d7d9\",\n  \"activityType\": \"Spraying\",\n  \"cropZoneId\": \"0e7b03b2-b5ce-d1ea-dddd-a482c4b57b70\",\n  \"operatorId\": \"a9083863-0510-300c-21c0-4f16aa255384\",\n  \"equipmentId\": \"8a2a0ceb-6dc0-ae4c-5510-fb9d1fbeafe9\",\n  \"startTime\": \"1985-05-13T05:54:51.544Z\",\n  \"endTime\": \"1977-02-07T17:58:13.976Z\",\n  \"area\": 5746.713963717395,\n  \"materials\": [\n    {\n      \"materialId\": \"b51d8829-9a1e-5d69-d484-9bf4f451aac3\",\n      \"applicationRate\": 7233.443302876771,\n      \"unit\": \"string\"\n    },\n    {\n      \"materialId\": \"aecacc05-4798-06a3-bec4-ef6901fb29fd\",\n      \"applicationRate\": 7987.66541552712,\n      \"unit\": \"string\"\n    }\n  ],\n  \"status\": \"Cancelled\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42be72c8-deaf-4e0b-b905-f8808be30294",
+          "name": "Get As-Applied Data",
+          "request": {
+            "name": "Get As-Applied Data",
+            "description": {
+              "content": "Download as-applied data for a specific equipment activity in a format suitable for third-party analysis or regulatory compliance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "equipmentactivities",
+                ":activityId",
+                "asapplied"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Download format"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "activityId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc853922-fc6f-4078-a8f9-85ff74c74b50",
+              "name": "As-applied data download",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "equipmentactivities",
+                    ":activityId",
+                    "asapplied"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activityId\": \"22fc444f-cf93-b543-3205-fd60eb22165c\",\n  \"format\": \"string\",\n  \"data\": {},\n  \"downloadUrl\": \"https://ZOoRjEPTvOzttUOkspznPuzkGDNeMJF.oxwqmBZceEH.hhhDz8+rugvU8.LamZosL8V-CSs7gVDjVU6WC3M+OkQ80TVH.MvzyPDDf-Am5mkKskRbW\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7bc00346-1f33-4ba6-91ff-1e6fefa3b60b",
+      "name": "Work Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "34eaf9ec-806d-4aeb-930a-474b3cc5b8af",
+          "name": "List Work Orders",
+          "request": {
+            "name": "List Work Orders",
+            "description": {
+              "content": "Returns work orders for an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "workorders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by work order status"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c271ad1-2531-42b5-b30f-232b256d9054",
+              "name": "List of work orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "workorders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"79023f61-eb79-a87c-af1c-9dfaef59abfa\",\n    \"title\": \"string\",\n    \"status\": \"Assigned\",\n    \"description\": \"string\",\n    \"cropZoneId\": \"3e1cde49-8697-165f-db79-56ad3cad3ba8\",\n    \"assignedOperatorId\": \"c7e2d3e1-c357-cd40-af80-6afb3abbad65\",\n    \"activityType\": \"string\",\n    \"scheduledDate\": \"1993-03-10\",\n    \"materials\": [\n      {\n        \"materialId\": \"068593b5-b74f-a6b9-f8c2-054e7fcaa48c\",\n        \"targetRate\": 5703.031839539678\n      },\n      {\n        \"materialId\": \"f1ccbcb1-54a8-c304-951c-340b1728d080\",\n        \"targetRate\": 7418.694569502285\n      }\n    ]\n  },\n  {\n    \"id\": \"52c12a25-492b-f647-9524-d2fdf8560e32\",\n    \"title\": \"string\",\n    \"status\": \"Assigned\",\n    \"description\": \"string\",\n    \"cropZoneId\": \"53a61d26-e08c-90a8-f212-40e7287e6d6d\",\n    \"assignedOperatorId\": \"a36717ac-c731-c3a8-bea7-2df24965c0ba\",\n    \"activityType\": \"string\",\n    \"scheduledDate\": \"1948-06-24\",\n    \"materials\": [\n      {\n        \"materialId\": \"e8d8f373-2781-47cf-9218-ee20ab6f3193\",\n        \"targetRate\": 588.7391433225253\n      },\n      {\n        \"materialId\": \"760803de-e6d7-222e-e6cc-36cee2046ffe\",\n        \"targetRate\": 8438.52604509617\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93198017-e112-46ab-877f-2e1e4b603696",
+          "name": "Create Work Order",
+          "request": {
+            "name": "Create Work Order",
+            "description": {
+              "content": "Create a work order to plan, assign, and communicate a job to farm equipment operators. Work orders can remotely preconfigure Precision-IQ Display tasks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "workorders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"cropZoneId\": \"<uuid>\",\n  \"activityType\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assignedOperatorId\": \"<uuid>\",\n  \"scheduledDate\": \"<date>\",\n  \"materials\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ae52d0c3-1554-4144-8a81-6f17dea1e8a8",
+              "name": "Work order created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "workorders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"cropZoneId\": \"<uuid>\",\n  \"activityType\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assignedOperatorId\": \"<uuid>\",\n  \"scheduledDate\": \"<date>\",\n  \"materials\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"81bbaba3-3360-7f3c-fcce-439bf9f27902\",\n  \"title\": \"string\",\n  \"status\": \"Planned\",\n  \"description\": \"string\",\n  \"cropZoneId\": \"49e3762c-1ac2-1afd-60a1-f3950c03ae22\",\n  \"assignedOperatorId\": \"9205de38-6e12-bfb4-d7d5-41314b15392f\",\n  \"activityType\": \"string\",\n  \"scheduledDate\": \"1977-07-28\",\n  \"materials\": [\n    {\n      \"materialId\": \"ee65e5de-c00d-9e1c-7e50-60efe45388e9\",\n      \"targetRate\": 5852.774785995549\n    },\n    {\n      \"materialId\": \"187e66c1-d78b-b406-ecbe-5d8d9e9d6908\",\n      \"targetRate\": 6578.421539956821\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d3c6d15-4f57-42f9-a4b4-8c5c9321d558",
+          "name": "Get Work Order",
+          "request": {
+            "name": "Get Work Order",
+            "description": {
+              "content": "Retrieve details for a specific work order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "workorders",
+                ":workOrderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workOrderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e62422cd-b2e6-403c-a723-7ff0a7c73cba",
+              "name": "Work order details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "workorders",
+                    ":workOrderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workOrderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"81bbaba3-3360-7f3c-fcce-439bf9f27902\",\n  \"title\": \"string\",\n  \"status\": \"Planned\",\n  \"description\": \"string\",\n  \"cropZoneId\": \"49e3762c-1ac2-1afd-60a1-f3950c03ae22\",\n  \"assignedOperatorId\": \"9205de38-6e12-bfb4-d7d5-41314b15392f\",\n  \"activityType\": \"string\",\n  \"scheduledDate\": \"1977-07-28\",\n  \"materials\": [\n    {\n      \"materialId\": \"ee65e5de-c00d-9e1c-7e50-60efe45388e9\",\n      \"targetRate\": 5852.774785995549\n    },\n    {\n      \"materialId\": \"187e66c1-d78b-b406-ecbe-5d8d9e9d6908\",\n      \"targetRate\": 6578.421539956821\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f469afc-7796-420f-8e5e-d9f7f96ead67",
+          "name": "Update Work Order",
+          "request": {
+            "name": "Update Work Order",
+            "description": {
+              "content": "Update a work order's status or details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "workorders",
+                ":workOrderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workOrderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"cropZoneId\": \"<uuid>\",\n  \"activityType\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assignedOperatorId\": \"<uuid>\",\n  \"scheduledDate\": \"<date>\",\n  \"materials\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af3b61dd-aabf-447b-bb4a-17cace660d76",
+              "name": "Work order updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "workorders",
+                    ":workOrderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workOrderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"cropZoneId\": \"<uuid>\",\n  \"activityType\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assignedOperatorId\": \"<uuid>\",\n  \"scheduledDate\": \"<date>\",\n  \"materials\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"81bbaba3-3360-7f3c-fcce-439bf9f27902\",\n  \"title\": \"string\",\n  \"status\": \"Planned\",\n  \"description\": \"string\",\n  \"cropZoneId\": \"49e3762c-1ac2-1afd-60a1-f3950c03ae22\",\n  \"assignedOperatorId\": \"9205de38-6e12-bfb4-d7d5-41314b15392f\",\n  \"activityType\": \"string\",\n  \"scheduledDate\": \"1977-07-28\",\n  \"materials\": [\n    {\n      \"materialId\": \"ee65e5de-c00d-9e1c-7e50-60efe45388e9\",\n      \"targetRate\": 5852.774785995549\n    },\n    {\n      \"materialId\": \"187e66c1-d78b-b406-ecbe-5d8d9e9d6908\",\n      \"targetRate\": 6578.421539956821\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f024d4a4-71f9-4511-b607-8c32a38bb128",
+      "name": "Prescriptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3becad00-9cd3-47c7-bc6b-c007f19a3cb7",
+          "name": "List Prescriptions",
+          "request": {
+            "name": "List Prescriptions",
+            "description": {
+              "content": "Returns prescription files for an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "prescriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cropZoneId",
+                  "value": "<uuid>",
+                  "description": "Filter by crop zone"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f734609-923b-4b31-b493-50a1b03fbbb4",
+              "name": "List of prescriptions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "prescriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cropZoneId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"b6bd73f6-c926-cfcd-1b1f-bc526a4b6adf\",\n    \"name\": \"string\",\n    \"cropZoneId\": \"1fb57f93-ee66-e017-4c35-7edfa4abcf0b\",\n    \"materialType\": \"Chemical\",\n    \"fileUrl\": \"https://QtktGugmnInOc.jallTSHGss8v2AkrPvQC\",\n    \"createdAt\": \"2000-10-02T13:10:00.447Z\",\n    \"status\": \"Archived\"\n  },\n  {\n    \"id\": \"91ac126a-8589-e0a5-dbcf-65d91725e5d7\",\n    \"name\": \"string\",\n    \"cropZoneId\": \"508ae833-ecc7-2648-5436-efa4907a051e\",\n    \"materialType\": \"Seed\",\n    \"fileUrl\": \"https://eWoqrLBzVGHarUFQXYfU.pqsiEcnNSu+aSsQCZa73LCo2fqXvmLJHuNnv0dVu1fywroJZDjKSVd\",\n    \"createdAt\": \"2008-11-30T09:20:59.617Z\",\n    \"status\": \"Archived\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8fef66dc-ca2c-4629-aa23-7f9b3268ce65",
+          "name": "Create Prescription",
+          "request": {
+            "name": "Create Prescription",
+            "description": {
+              "content": "Upload a prescription file to be sent to Trimble displays for variable-rate application in the field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "prescriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"cropZoneId\": \"<uuid>\",\n  \"materialType\": \"<string>\",\n  \"prescription\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7804a1a5-9339-4519-81b6-972efd46e7b8",
+              "name": "Prescription created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "prescriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"cropZoneId\": \"<uuid>\",\n  \"materialType\": \"<string>\",\n  \"prescription\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c7b2d598-2ad3-c97d-ca14-ea0ef9ea3a9b\",\n  \"name\": \"string\",\n  \"cropZoneId\": \"c5ed7014-773e-fcd7-a5f3-363ef84c60a2\",\n  \"materialType\": \"Seed\",\n  \"fileUrl\": \"https://uxoDssnCycXHfZbkzegBpXVD.izbDxHnyPck013gCYHvbUfTVvMgWHnYIrwUPdyqFdhOJP6pMfpijJkuKk7kThFMI,S0dzOXgPiFxNnLs\",\n  \"createdAt\": \"2014-06-07T14:18:03.112Z\",\n  \"status\": \"Archived\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a738410f-3184-4f74-aef6-5d31a222ab2e",
+          "name": "Get Prescription",
+          "request": {
+            "name": "Get Prescription",
+            "description": {
+              "content": "Retrieve a specific prescription file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "prescriptions",
+                ":prescriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "prescriptionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8174794-0e33-4c43-9a67-b07ee89ba28d",
+              "name": "Prescription details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "prescriptions",
+                    ":prescriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "prescriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c7b2d598-2ad3-c97d-ca14-ea0ef9ea3a9b\",\n  \"name\": \"string\",\n  \"cropZoneId\": \"c5ed7014-773e-fcd7-a5f3-363ef84c60a2\",\n  \"materialType\": \"Seed\",\n  \"fileUrl\": \"https://uxoDssnCycXHfZbkzegBpXVD.izbDxHnyPck013gCYHvbUfTVvMgWHnYIrwUPdyqFdhOJP6pMfpijJkuKk7kThFMI,S0dzOXgPiFxNnLs\",\n  \"createdAt\": \"2014-06-07T14:18:03.112Z\",\n  \"status\": \"Archived\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f3e8f00-75db-4056-882c-f12fa78bc4ab",
+          "name": "Delete Prescription",
+          "request": {
+            "name": "Delete Prescription",
+            "description": {
+              "content": "Delete a prescription file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "prescriptions",
+                ":prescriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "prescriptionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "285dc0f5-58a8-46ce-8f40-3a996a6dfa74",
+              "name": "Prescription deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "prescriptions",
+                    ":prescriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "prescriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ed5e73c0-f705-4b50-973e-b2862cb0b769",
+      "name": "Materials",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd2bf1a0-986e-45da-b754-98f4ffcbb02a",
+          "name": "List Materials",
+          "request": {
+            "name": "List Materials",
+            "description": {
+              "content": "Returns materials (seeds, fertilizers, chemicals) for an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "materials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by material type"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79b289b9-bded-4ec2-87be-e94f7902a0ca",
+              "name": "List of materials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "materials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"6f96384e-ed19-bd3a-2115-4739d1a40aed\",\n    \"name\": \"string\",\n    \"type\": \"Fertilizer\",\n    \"manufacturer\": \"string\",\n    \"registrationNumber\": \"string\",\n    \"unit\": \"string\"\n  },\n  {\n    \"id\": \"904307ce-2c59-6a92-1ce1-48633b15004a\",\n    \"name\": \"string\",\n    \"type\": \"Seed\",\n    \"manufacturer\": \"string\",\n    \"registrationNumber\": \"string\",\n    \"unit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3a29786-5a51-4b89-9eff-57fe020b75ce",
+          "name": "Create Material",
+          "request": {
+            "name": "Create Material",
+            "description": {
+              "content": "Add a material to the organization's product library.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "materials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"unit\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4f1d080b-31f1-487b-9574-6bef28cf229e",
+              "name": "Material created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "materials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"unit\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a95fbccd-5301-a133-00fd-3d932d276d9a\",\n  \"name\": \"string\",\n  \"type\": \"Seed\",\n  \"manufacturer\": \"string\",\n  \"registrationNumber\": \"string\",\n  \"unit\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "38e5b3c8-6c56-48fd-8475-6ef39d3d2da5",
+      "name": "Imagery",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4d5e87a1-7e38-4c22-9ec3-18a5bb7da627",
+          "name": "List Imagery",
+          "request": {
+            "name": "List Imagery",
+            "description": {
+              "content": "Returns uploaded GeoTIFF imagery processed for crop zones.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "imagery"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cropZoneId",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c6f6c13-366b-417a-acd9-b62f2d09498d",
+              "name": "List of imagery records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "imagery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cropZoneId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"dde903ff-e84c-625d-9a50-5b581afa2cb1\",\n    \"name\": \"string\",\n    \"date\": \"1959-02-06\",\n    \"status\": \"Failed\",\n    \"cropZones\": [\n      \"da0a59f1-8da9-528b-b3e4-7701dbc73c2e\",\n      \"a47e8fb9-e072-356d-5493-1e558ecd3549\"\n    ]\n  },\n  {\n    \"id\": \"5d3f8ce3-470e-f735-a862-dc2bdfa7b084\",\n    \"name\": \"string\",\n    \"date\": \"1972-09-16\",\n    \"status\": \"Failed\",\n    \"cropZones\": [\n      \"60e4c068-439f-b0c2-9124-2cdc283b7fad\",\n      \"e1304cab-7180-e6ae-20c0-2ddb1a0b1ae5\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5dbdb8a3-2a01-423a-987b-064ecffc9311",
+          "name": "Upload Imagery",
+          "request": {
+            "name": "Upload Imagery",
+            "description": {
+              "content": "Upload a GeoTIFF image. It will be processed and clipped to any crop zones whose boundaries overlap the imagery area.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "imagery"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "GeoTIFF image file"
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Image name"
+                },
+                {
+                  "key": "date",
+                  "value": "<date>",
+                  "type": "text",
+                  "description": "Date the imagery was captured"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a9c020fb-9cf6-4367-99fe-5a69b172b5be",
+              "name": "Imagery uploaded and queued for processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "imagery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "GeoTIFF image file",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Image name",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Date the imagery was captured",
+                        "type": "text/plain"
+                      },
+                      "key": "date",
+                      "value": "<date>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"553ccfdc-5872-85b8-39d5-29ca417a1055\",\n  \"name\": \"string\",\n  \"date\": \"1997-10-31\",\n  \"status\": \"Processed\",\n  \"cropZones\": [\n    \"c172fa50-96c4-6136-946f-ca5fb7d85231\",\n    \"8bb6a90c-59d4-2fcd-cfe7-5a9503b70d7e\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f35e55a7-2d90-4d9e-9a78-4bdbd0b34f31",
+      "name": "Boundaries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "075392ee-9f94-4469-890f-46fb3ad1a245",
+          "name": "List Boundaries",
+          "request": {
+            "name": "List Boundaries",
+            "description": {
+              "content": "Returns all field and crop zone boundaries for an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "boundaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fieldId",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "67fe97ba-d6ee-450f-bdc5-c8259925c1a2",
+              "name": "List of boundaries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "boundaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"1f67bc06-3a92-1380-d7e1-96e3eff10af4\",\n    \"fieldId\": \"e280cd8d-2301-2d94-5cd6-743f974c9338\",\n    \"cropZoneId\": \"8e705fd5-48f2-5f95-b782-45085d5cec6e\",\n    \"geometry\": {\n      \"type\": \"Point\",\n      \"coordinates\": {}\n    },\n    \"area\": 9426.735413372211\n  },\n  {\n    \"id\": \"7458080d-b6b4-0d20-bbbe-0b403e8fa1c3\",\n    \"fieldId\": \"82336b4e-e27a-94d4-eefb-bcaa1a74ebb1\",\n    \"cropZoneId\": \"9801e70a-37cb-4e18-586e-60402e26174a\",\n    \"geometry\": {\n      \"type\": \"Point\",\n      \"coordinates\": {}\n    },\n    \"area\": 2234.8428350118143\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "edbe0e71-ceae-4185-a479-40fc3e8ee623",
+    "name": "Trimble Agriculture Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party integrators to exchange precision agriculture data between field devices and farm management platforms. Serves over 180 million customer acres globally. Access requires registration at the Trimble Ag Developer Network.\n\nContact Support:\n Email: ag_api@trimble.com",
+      "type": "text/plain"
+    }
+  }
+}

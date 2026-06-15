@@ -1,0 +1,870 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trimble Agriculture Data API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations"
+          },
+          "docs": "Returns a list of organizations the authenticated user can access."
+        },
+        {
+          "info": {
+            "name": "Get Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Organization unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific organization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Farms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Farms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all farms for an organization."
+        },
+        {
+          "info": {
+            "name": "Create Farm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new farm within an organization."
+        },
+        {
+          "info": {
+            "name": "Get Farm",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms/:farmId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific farm."
+        },
+        {
+          "info": {
+            "name": "Update Farm",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms/:farmId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a farm's details."
+        },
+        {
+          "info": {
+            "name": "Delete Farm",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms/:farmId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a farm from an organization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms/:farmId/fields",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all fields for a farm."
+        },
+        {
+          "info": {
+            "name": "Create Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms/:farmId/fields",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new field within a farm."
+        },
+        {
+          "info": {
+            "name": "Get Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms/:farmId/fields/:fieldId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific field."
+        },
+        {
+          "info": {
+            "name": "Update Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms/:farmId/fields/:fieldId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a field's details or boundary geometry."
+        },
+        {
+          "info": {
+            "name": "Delete Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms/:farmId/fields/:fieldId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a field from a farm."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Crop Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Crop Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/cropzones",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Filter by crop year/season"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by farm"
+              },
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by field"
+              }
+            ]
+          },
+          "docs": "Returns crop zones for an organization. Crop zones organize crop information by field and season."
+        },
+        {
+          "info": {
+            "name": "Create Crop Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/cropzones",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new crop zone for a field and season."
+        },
+        {
+          "info": {
+            "name": "Get Crop Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/cropzones/:cropZoneId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cropZoneId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific crop zone."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Equipment Activities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Equipment Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/equipmentactivities",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter activities starting after this time"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter activities ending before this time"
+              },
+              {
+                "name": "cropZoneId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by crop zone"
+              },
+              {
+                "name": "activityType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by activity type"
+              }
+            ]
+          },
+          "docs": "Returns equipment activity records (in-field jobs such as planting, fertilizing, spraying, or harvesting) created from precision ag displays."
+        },
+        {
+          "info": {
+            "name": "Get Equipment Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/equipmentactivities/:activityId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "activityId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details and as-applied data for a specific equipment activity."
+        },
+        {
+          "info": {
+            "name": "Get As-Applied Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/equipmentactivities/:activityId/asapplied",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "activityId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Download format"
+              }
+            ]
+          },
+          "docs": "Download as-applied data for a specific equipment activity in a format suitable for third-party analysis or regulatory compliance."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Work Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Work Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/workorders",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by work order status"
+              }
+            ]
+          },
+          "docs": "Returns work orders for an organization."
+        },
+        {
+          "info": {
+            "name": "Create Work Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/workorders",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a work order to plan, assign, and communicate a job to farm equipment operators. Work orders can remotely preconfigure Precision-IQ Display tasks."
+        },
+        {
+          "info": {
+            "name": "Get Work Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/workorders/:workOrderId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workOrderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific work order."
+        },
+        {
+          "info": {
+            "name": "Update Work Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/workorders/:workOrderId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workOrderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a work order's status or details."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Prescriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Prescriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/prescriptions",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cropZoneId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by crop zone"
+              }
+            ]
+          },
+          "docs": "Returns prescription files for an organization."
+        },
+        {
+          "info": {
+            "name": "Create Prescription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/prescriptions",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload a prescription file to be sent to Trimble displays for variable-rate application in the field."
+        },
+        {
+          "info": {
+            "name": "Get Prescription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/prescriptions/:prescriptionId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "prescriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific prescription file."
+        },
+        {
+          "info": {
+            "name": "Delete Prescription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/prescriptions/:prescriptionId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "prescriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a prescription file."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Materials",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Materials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/materials",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by material type"
+              }
+            ]
+          },
+          "docs": "Returns materials (seeds, fertilizers, chemicals) for an organization."
+        },
+        {
+          "info": {
+            "name": "Create Material",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/materials",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a material to the organization's product library."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Imagery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Imagery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/imagery",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cropZoneId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns uploaded GeoTIFF imagery processed for crop zones."
+        },
+        {
+          "info": {
+            "name": "Upload Imagery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/imagery",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "date",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a GeoTIFF image. It will be processed and clipped to any crop zones whose boundaries overlap the imagery area."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Boundaries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Boundaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/boundaries",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all field and crop zone boundaries for an organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
