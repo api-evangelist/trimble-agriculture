@@ -104,7 +104,7 @@ common:
     url: https://agdeveloper.trimble.com/
   - type: Documentation
     url: https://agdeveloper.trimble.com/api-docs
-  - type: SignUp
+  - type: Signup
     url: https://agdeveloper.trimble.com/
   - type: Contact
     url: mailto:ag_api@trimble.com
