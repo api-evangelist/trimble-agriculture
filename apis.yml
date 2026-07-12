@@ -94,6 +94,12 @@ solutions:
   - Large production farms building multi-vendor data workflows
   - Regulatory compliance and farm management platforms
 common:
+  - type: TrustCenter
+    url: security/trimble-agriculture-trust-center.yml
+  - type: DomainSecurity
+    url: security/trimble-agriculture-domain-security.yml
+  - type: Authentication
+    url: authentication/trimble-agriculture-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/trimble-ag
   - type: LinkedIn
