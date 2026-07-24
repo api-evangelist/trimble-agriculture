@@ -1,0 +1,84 @@
+openapi: 3.0.3
+info:
+  title: Trimble Agriculture Data Boundaries API
+  description: The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party integrators to exchange precision agriculture data between field devices and farm management platforms. Serves over 180 million customer acres globally. Access requires registration at the Trimble Ag Developer Network.
+  version: 3.0.0
+  contact:
+    url: https://agdeveloper.trimble.com/
+    email: ag_api@trimble.com
+servers:
+- url: https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0
+  description: Trimble Agriculture Cloud API
+security:
+- bearerAuth: []
+tags:
+- name: Boundaries
+paths:
+  /organizations/{organizationId}/boundaries:
+    get:
+      operationId: listBoundaries
+      summary: List Boundaries
+      description: Returns all field and crop zone boundaries for an organization.
+      tags:
+      - Boundaries
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: fieldId
+        in: query
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: List of boundaries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Boundary'
+components:
+  schemas:
+    Boundary:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          format: uuid
+        fieldId:
+          type: string
+          format: uuid
+        cropZoneId:
+          type: string
+          format: uuid
+        geometry:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+        area:
+          type: number
+          format: float
+          description: Boundary area in hectares
+    GeoJsonGeometry:
+      type: object
+      description: GeoJSON geometry object
+      properties:
+        type:
+          type: string
+          enum:
+          - Point
+          - Polygon
+          - MultiPolygon
+          - LineString
+        coordinates:
+          description: GeoJSON coordinates array
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 bearer token. Register at agdeveloper.trimble.com to obtain API credentials.

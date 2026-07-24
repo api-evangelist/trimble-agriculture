@@ -1,0 +1,230 @@
+openapi: 3.0.3
+info:
+  title: Trimble Agriculture Data Boundaries Fields API
+  description: The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party integrators to exchange precision agriculture data between field devices and farm management platforms. Serves over 180 million customer acres globally. Access requires registration at the Trimble Ag Developer Network.
+  version: 3.0.0
+  contact:
+    url: https://agdeveloper.trimble.com/
+    email: ag_api@trimble.com
+servers:
+- url: https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0
+  description: Trimble Agriculture Cloud API
+security:
+- bearerAuth: []
+tags:
+- name: Fields
+paths:
+  /organizations/{organizationId}/farms/{farmId}/fields:
+    get:
+      operationId: listFields
+      summary: List Fields
+      description: Returns all fields for a farm.
+      tags:
+      - Fields
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: farmId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: List of fields
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Field'
+    post:
+      operationId: createField
+      summary: Create Field
+      description: Create a new field within a farm.
+      tags:
+      - Fields
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: farmId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FieldInput'
+      responses:
+        '200':
+          description: Field created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
+  /organizations/{organizationId}/farms/{farmId}/fields/{fieldId}:
+    get:
+      operationId: getFieldById
+      summary: Get Field
+      description: Retrieve details for a specific field.
+      tags:
+      - Fields
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: farmId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: fieldId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Field details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
+    put:
+      operationId: updateField
+      summary: Update Field
+      description: Update a field's details or boundary geometry.
+      tags:
+      - Fields
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: farmId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: fieldId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FieldInput'
+      responses:
+        '200':
+          description: Field updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
+    delete:
+      operationId: deleteField
+      summary: Delete Field
+      description: Delete a field from a farm.
+      tags:
+      - Fields
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: farmId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: fieldId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Field deleted
+components:
+  schemas:
+    Field:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: Field name
+        farmId:
+          type: string
+          format: uuid
+        area:
+          type: number
+          format: float
+          description: Field area in hectares
+        boundary:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+          description: Field boundary as GeoJSON geometry
+    FieldInput:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        area:
+          type: number
+          format: float
+        boundary:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+    GeoJsonGeometry:
+      type: object
+      description: GeoJSON geometry object
+      properties:
+        type:
+          type: string
+          enum:
+          - Point
+          - Polygon
+          - MultiPolygon
+          - LineString
+        coordinates:
+          description: GeoJSON coordinates array
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 bearer token. Register at agdeveloper.trimble.com to obtain API credentials.

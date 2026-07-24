@@ -1,0 +1,178 @@
+openapi: 3.0.3
+info:
+  title: Trimble Agriculture Data Boundaries Crop Zones API
+  description: The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party integrators to exchange precision agriculture data between field devices and farm management platforms. Serves over 180 million customer acres globally. Access requires registration at the Trimble Ag Developer Network.
+  version: 3.0.0
+  contact:
+    url: https://agdeveloper.trimble.com/
+    email: ag_api@trimble.com
+servers:
+- url: https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0
+  description: Trimble Agriculture Cloud API
+security:
+- bearerAuth: []
+tags:
+- name: Crop Zones
+paths:
+  /organizations/{organizationId}/cropzones:
+    get:
+      operationId: listCropZones
+      summary: List Crop Zones
+      description: Returns crop zones for an organization. Crop zones organize crop information by field and season.
+      tags:
+      - Crop Zones
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: season
+        in: query
+        schema:
+          type: integer
+        description: Filter by crop year/season
+      - name: farmId
+        in: query
+        schema:
+          type: string
+          format: uuid
+        description: Filter by farm
+      - name: fieldId
+        in: query
+        schema:
+          type: string
+          format: uuid
+        description: Filter by field
+      responses:
+        '200':
+          description: List of crop zones
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CropZone'
+    post:
+      operationId: createCropZone
+      summary: Create Crop Zone
+      description: Create a new crop zone for a field and season.
+      tags:
+      - Crop Zones
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CropZoneInput'
+      responses:
+        '200':
+          description: Crop zone created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CropZone'
+  /organizations/{organizationId}/cropzones/{cropZoneId}:
+    get:
+      operationId: getCropZoneById
+      summary: Get Crop Zone
+      description: Retrieve details for a specific crop zone.
+      tags:
+      - Crop Zones
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: cropZoneId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Crop zone details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CropZone'
+components:
+  schemas:
+    CropZoneInput:
+      type: object
+      required:
+      - fieldId
+      - season
+      - cropType
+      properties:
+        fieldId:
+          type: string
+          format: uuid
+        season:
+          type: integer
+        cropType:
+          type: string
+        variety:
+          type: string
+        boundary:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+    CropZone:
+      type: object
+      required:
+      - id
+      - fieldId
+      - season
+      properties:
+        id:
+          type: string
+          format: uuid
+        fieldId:
+          type: string
+          format: uuid
+        farmId:
+          type: string
+          format: uuid
+        season:
+          type: integer
+          description: Crop year (e.g., 2026)
+        cropType:
+          type: string
+          description: Crop being grown (e.g., Corn, Soybeans, Wheat)
+        variety:
+          type: string
+          description: Crop variety or hybrid
+        area:
+          type: number
+          format: float
+          description: Crop zone area in hectares
+        boundary:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+    GeoJsonGeometry:
+      type: object
+      description: GeoJSON geometry object
+      properties:
+        type:
+          type: string
+          enum:
+          - Point
+          - Polygon
+          - MultiPolygon
+          - LineString
+        coordinates:
+          description: GeoJSON coordinates array
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 bearer token. Register at agdeveloper.trimble.com to obtain API credentials.

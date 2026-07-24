@@ -1,0 +1,81 @@
+openapi: 3.0.3
+info:
+  title: Trimble Agriculture Data Boundaries Organizations API
+  description: The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party integrators to exchange precision agriculture data between field devices and farm management platforms. Serves over 180 million customer acres globally. Access requires registration at the Trimble Ag Developer Network.
+  version: 3.0.0
+  contact:
+    url: https://agdeveloper.trimble.com/
+    email: ag_api@trimble.com
+servers:
+- url: https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0
+  description: Trimble Agriculture Cloud API
+security:
+- bearerAuth: []
+tags:
+- name: Organizations
+paths:
+  /organizations:
+    get:
+      operationId: listOrganizations
+      summary: List Organizations
+      description: Returns a list of organizations the authenticated user can access.
+      tags:
+      - Organizations
+      responses:
+        '200':
+          description: List of organizations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Organization'
+        '401':
+          description: Unauthorized
+  /organizations/{organizationId}:
+    get:
+      operationId: getOrganizationById
+      summary: Get Organization
+      description: Retrieve details for a specific organization.
+      tags:
+      - Organizations
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: Organization unique identifier
+      responses:
+        '200':
+          description: Organization details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+        '404':
+          description: Organization not found
+components:
+  schemas:
+    Organization:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Organization unique identifier
+        name:
+          type: string
+          description: Organization display name
+        country:
+          type: string
+          description: Country code (ISO 3166-1 alpha-2)
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 bearer token. Register at agdeveloper.trimble.com to obtain API credentials.

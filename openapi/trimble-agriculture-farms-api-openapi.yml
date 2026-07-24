@@ -1,0 +1,197 @@
+openapi: 3.0.3
+info:
+  title: Trimble Agriculture Data Boundaries Farms API
+  description: The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party integrators to exchange precision agriculture data between field devices and farm management platforms. Serves over 180 million customer acres globally. Access requires registration at the Trimble Ag Developer Network.
+  version: 3.0.0
+  contact:
+    url: https://agdeveloper.trimble.com/
+    email: ag_api@trimble.com
+servers:
+- url: https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0
+  description: Trimble Agriculture Cloud API
+security:
+- bearerAuth: []
+tags:
+- name: Farms
+paths:
+  /organizations/{organizationId}/farms:
+    get:
+      operationId: listFarms
+      summary: List Farms
+      description: Returns all farms for an organization.
+      tags:
+      - Farms
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: List of farms
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Farm'
+    post:
+      operationId: createFarm
+      summary: Create Farm
+      description: Create a new farm within an organization.
+      tags:
+      - Farms
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FarmInput'
+      responses:
+        '201':
+          description: Farm created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+        '200':
+          description: Farm created (alternate success)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+  /organizations/{organizationId}/farms/{farmId}:
+    get:
+      operationId: getFarmById
+      summary: Get Farm
+      description: Retrieve details for a specific farm.
+      tags:
+      - Farms
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: farmId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Farm details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+    put:
+      operationId: updateFarm
+      summary: Update Farm
+      description: Update a farm's details.
+      tags:
+      - Farms
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: farmId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FarmInput'
+      responses:
+        '200':
+          description: Farm updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farm'
+    delete:
+      operationId: deleteFarm
+      summary: Delete Farm
+      description: Delete a farm from an organization.
+      tags:
+      - Farms
+      parameters:
+      - name: organizationId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: farmId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Farm deleted
+components:
+  schemas:
+    FarmInput:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+    Farm:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: Farm name
+        organizationId:
+          type: string
+          format: uuid
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth 2.0 bearer token. Register at agdeveloper.trimble.com to obtain API credentials.
