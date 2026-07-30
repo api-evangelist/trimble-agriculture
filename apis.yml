@@ -8,9 +8,22 @@ description: >-
   integrators to exchange as-applied data, send prescriptions to Trimble displays, and align field resources across
   precision agriculture systems. The platform serves over 180 million customer acres globally.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/trimble-agriculture.png
 tags:
   - Agriculture
   - Farming
@@ -24,46 +37,153 @@ created: '2025-02-06'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: trimble-agriculture:trimble-agriculture-data
-    name: Trimble Agriculture Data API
-    description: >-
-      The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop
-      zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party
-      integrators to exchange precision agriculture data between field devices and farm management platforms. Base URL:
-      https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0
-    humanURL: https://agdeveloper.trimble.com/api-docs
-    tags:
-      - Agriculture
-      - Farming
-      - Field Management
-      - Prescriptions
-      - Equipment Activities
-      - Work Orders
-      - Crop Zones
-      - Boundaries
-    properties:
-      - type: Documentation
-        url: https://agdeveloper.trimble.com/api-docs
-      - type: GettingStarted
-        url: https://agdeveloper.trimble.com/
-      - type: OpenAPI
-        url: openapi/trimble-agriculture-openapi.yml
-  - aid: trimble-agriculture:trimble-agriculture-telematics
-    name: Trimble Agriculture Telematics API
-    description: >-
-      The Trimble Agriculture Telematics API provides access to real-time and historical equipment telematics data from
-      connected Trimble displays and precision agriculture devices. Includes equipment location, status, and operational
-      metrics.
-    humanURL: https://agdeveloper.trimble.com/api-docs
-    tags:
-      - Agriculture
-      - Telematics
-      - IoT
-      - Equipment
-      - GPS
-    properties:
-      - type: Documentation
-        url: https://agdeveloper.trimble.com/api-docs
+- aid: trimble-agriculture:trimble-agriculture-telematics
+  name: Trimble Agriculture Telematics API
+  description: >-
+    The Trimble Agriculture Telematics API provides access to real-time and historical equipment telematics
+    data from connected Trimble displays and precision agriculture devices. Includes equipment location,
+    status, and operational metrics.
+  humanURL: https://agdeveloper.trimble.com/api-docs
+  tags:
+  - Agriculture
+  - Telematics
+  - IoT
+  - Equipment
+  - GPS
+  properties:
+  - type: Documentation
+    url: https://agdeveloper.trimble.com/api-docs
+- aid: trimble-agriculture:trimble-agriculture-boundaries-api
+  name: Trimble Agriculture Boundaries API
+  description: The Boundaries API from Trimble Agriculture — 1 operation(s) for boundaries.
+  humanURL: https://agdeveloper.trimble.com/api-docs
+  tags:
+  - Boundaries
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-agriculture-boundaries-api-openapi.yml
+  - type: Documentation
+    url: https://agdeveloper.trimble.com/api-docs
+  - type: GettingStarted
+    url: https://agdeveloper.trimble.com/
+- aid: trimble-agriculture:trimble-agriculture-crop-zones-api
+  name: Trimble Agriculture Crop Zones API
+  description: The Crop Zones API from Trimble Agriculture — 2 operation(s) for crop zones.
+  humanURL: https://agdeveloper.trimble.com/api-docs
+  tags:
+  - Crop Zones
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-agriculture-crop-zones-api-openapi.yml
+  - type: Documentation
+    url: https://agdeveloper.trimble.com/api-docs
+  - type: GettingStarted
+    url: https://agdeveloper.trimble.com/
+- aid: trimble-agriculture:trimble-agriculture-equipment-activities-api
+  name: Trimble Agriculture Equipment Activities API
+  description: >-
+    The Equipment Activities API from Trimble Agriculture — 3 operation(s) for equipment activities.
+  humanURL: https://agdeveloper.trimble.com/api-docs
+  tags:
+  - Equipment Activities
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-agriculture-equipment-activities-api-openapi.yml
+  - type: Documentation
+    url: https://agdeveloper.trimble.com/api-docs
+  - type: GettingStarted
+    url: https://agdeveloper.trimble.com/
+- aid: trimble-agriculture:trimble-agriculture-farms-api
+  name: Trimble Agriculture Farms API
+  description: The Farms API from Trimble Agriculture — 2 operation(s) for farms.
+  humanURL: https://agdeveloper.trimble.com/api-docs
+  tags:
+  - Farms
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-agriculture-farms-api-openapi.yml
+  - type: Documentation
+    url: https://agdeveloper.trimble.com/api-docs
+  - type: GettingStarted
+    url: https://agdeveloper.trimble.com/
+- aid: trimble-agriculture:trimble-agriculture-fields-api
+  name: Trimble Agriculture Fields API
+  description: The Fields API from Trimble Agriculture — 2 operation(s) for fields.
+  humanURL: https://agdeveloper.trimble.com/api-docs
+  tags:
+  - Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-agriculture-fields-api-openapi.yml
+  - type: Documentation
+    url: https://agdeveloper.trimble.com/api-docs
+  - type: GettingStarted
+    url: https://agdeveloper.trimble.com/
+- aid: trimble-agriculture:trimble-agriculture-imagery-api
+  name: Trimble Agriculture Imagery API
+  description: The Imagery API from Trimble Agriculture — 1 operation(s) for imagery.
+  humanURL: https://agdeveloper.trimble.com/api-docs
+  tags:
+  - Imagery
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-agriculture-imagery-api-openapi.yml
+  - type: Documentation
+    url: https://agdeveloper.trimble.com/api-docs
+  - type: GettingStarted
+    url: https://agdeveloper.trimble.com/
+- aid: trimble-agriculture:trimble-agriculture-materials-api
+  name: Trimble Agriculture Materials API
+  description: The Materials API from Trimble Agriculture — 1 operation(s) for materials.
+  humanURL: https://agdeveloper.trimble.com/api-docs
+  tags:
+  - Materials
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-agriculture-materials-api-openapi.yml
+  - type: Documentation
+    url: https://agdeveloper.trimble.com/api-docs
+  - type: GettingStarted
+    url: https://agdeveloper.trimble.com/
+- aid: trimble-agriculture:trimble-agriculture-organizations-api
+  name: Trimble Agriculture Organizations API
+  description: The Organizations API from Trimble Agriculture — 2 operation(s) for organizations.
+  humanURL: https://agdeveloper.trimble.com/api-docs
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-agriculture-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://agdeveloper.trimble.com/api-docs
+  - type: GettingStarted
+    url: https://agdeveloper.trimble.com/
+- aid: trimble-agriculture:trimble-agriculture-prescriptions-api
+  name: Trimble Agriculture Prescriptions API
+  description: The Prescriptions API from Trimble Agriculture — 2 operation(s) for prescriptions.
+  humanURL: https://agdeveloper.trimble.com/api-docs
+  tags:
+  - Prescriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-agriculture-prescriptions-api-openapi.yml
+  - type: Documentation
+    url: https://agdeveloper.trimble.com/api-docs
+  - type: GettingStarted
+    url: https://agdeveloper.trimble.com/
+- aid: trimble-agriculture:trimble-agriculture-work-orders-api
+  name: Trimble Agriculture Work Orders API
+  description: The Work Orders API from Trimble Agriculture — 2 operation(s) for work orders.
+  humanURL: https://agdeveloper.trimble.com/api-docs
+  tags:
+  - Work Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-agriculture-work-orders-api-openapi.yml
+  - type: Documentation
+    url: https://agdeveloper.trimble.com/api-docs
+  - type: GettingStarted
+    url: https://agdeveloper.trimble.com/
 features:
   - Farm, field, and crop zone management
   - Equipment activity data from precision ag displays
