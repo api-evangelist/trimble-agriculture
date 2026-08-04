@@ -1,0 +1,32 @@
+{
+  "provider": "trimble-agriculture",
+  "sources": [
+    "trimble-agriculture-boundaries-api-openapi.yml",
+    "trimble-agriculture-crop-zones-api-openapi.yml",
+    "trimble-agriculture-equipment-activities-api-openapi.yml",
+    "trimble-agriculture-farms-api-openapi.yml",
+    "trimble-agriculture-fields-api-openapi.yml",
+    "trimble-agriculture-imagery-api-openapi.yml",
+    "trimble-agriculture-materials-api-openapi.yml",
+    "trimble-agriculture-organizations-api-openapi.yml",
+    "trimble-agriculture-prescriptions-api-openapi.yml",
+    "trimble-agriculture-work-orders-api-openapi.yml"
+  ],
+  "outputs": [
+    "trimble-agriculture-boundaries-api-openapi.yml",
+    "trimble-agriculture-crop-zones-api-openapi.yml",
+    "trimble-agriculture-equipment-activities-api-openapi.yml",
+    "trimble-agriculture-farms-api-openapi.yml",
+    "trimble-agriculture-fields-api-openapi.yml",
+    "trimble-agriculture-imagery-api-openapi.yml",
+    "trimble-agriculture-materials-api-openapi.yml",
+    "trimble-agriculture-organizations-api-openapi.yml",
+    "trimble-agriculture-prescriptions-api-openapi.yml",
+    "trimble-agriculture-work-orders-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
