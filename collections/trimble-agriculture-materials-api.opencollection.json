@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trimble Agriculture Data Boundaries Materials API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Materials",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Materials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/materials",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by material type"
+              }
+            ]
+          },
+          "docs": "Returns materials (seeds, fertilizers, chemicals) for an organization."
+        },
+        {
+          "info": {
+            "name": "Create Material",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/materials",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a material to the organization's product library."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

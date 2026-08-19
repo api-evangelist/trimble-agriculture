@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trimble Agriculture Data Boundaries Organizations API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations"
+          },
+          "docs": "Returns a list of organizations the authenticated user can access."
+        },
+        {
+          "info": {
+            "name": "Get Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path",
+                "description": "Organization unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

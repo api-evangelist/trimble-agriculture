@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trimble Agriculture Data Boundaries Crop Zones API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Crop Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Crop Zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/cropzones",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "query",
+                "description": "Filter by crop year/season"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by farm"
+              },
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by field"
+              }
+            ]
+          },
+          "docs": "Returns crop zones for an organization. Crop zones organize crop information by field and season."
+        },
+        {
+          "info": {
+            "name": "Create Crop Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/cropzones",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new crop zone for a field and season."
+        },
+        {
+          "info": {
+            "name": "Get Crop Zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/cropzones/:cropZoneId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cropZoneId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific crop zone."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

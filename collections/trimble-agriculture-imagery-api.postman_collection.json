@@ -1,0 +1,305 @@
+{
+  "item": [
+    {
+      "id": "af8ebfe0-c875-4615-b9dd-d6407d4a3e97",
+      "name": "Imagery",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6b850b9c-5d45-4c94-ad25-40cdd8e50032",
+          "name": "List Imagery",
+          "request": {
+            "name": "List Imagery",
+            "description": {
+              "content": "Returns uploaded GeoTIFF imagery processed for crop zones.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "imagery"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cropZoneId",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c63cc70-9c19-4ae3-b6b8-3210c701927d",
+              "name": "List of imagery records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "imagery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cropZoneId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"a0563a7c-d365-53e8-58f0-e556e75082b2\",\n    \"name\": \"string\",\n    \"date\": \"1947-05-21\",\n    \"status\": \"Processing\",\n    \"cropZones\": [\n      \"51778477-92c2-2e59-74cd-b164ac7c58f4\",\n      \"de441f13-4f9a-e56b-70a5-0c2ddcd3042e\"\n    ]\n  },\n  {\n    \"id\": \"ea0bf9b6-1d09-f711-007b-897ab74d80c6\",\n    \"name\": \"string\",\n    \"date\": \"2013-08-11\",\n    \"status\": \"Processed\",\n    \"cropZones\": [\n      \"f2d50ee7-4cf0-cccc-17ff-53a8c53cbe11\",\n      \"9d14624b-8a20-f5d9-253c-f4f0b83ab453\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15222b93-4f74-46fe-88cf-deb40dcca476",
+          "name": "Upload Imagery",
+          "request": {
+            "name": "Upload Imagery",
+            "description": {
+              "content": "Upload a GeoTIFF image. It will be processed and clipped to any crop zones whose boundaries overlap the imagery area.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "imagery"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "GeoTIFF image file"
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Image name"
+                },
+                {
+                  "key": "date",
+                  "value": "<date>",
+                  "type": "text",
+                  "description": "Date the imagery was captured"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7c196bbe-59e0-4be5-94fb-f8c4a5a96017",
+              "name": "Imagery uploaded and queued for processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "imagery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "GeoTIFF image file",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Image name",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Date the imagery was captured",
+                        "type": "text/plain"
+                      },
+                      "key": "date",
+                      "value": "<date>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"52026f65-3f12-5f99-6d71-325615765ebc\",\n  \"name\": \"string\",\n  \"date\": \"2016-08-28\",\n  \"status\": \"Failed\",\n  \"cropZones\": [\n    \"25e571f2-3393-c28f-ad64-f19d72b9b3fc\",\n    \"f5fbcd23-ad61-97ab-9d5a-01663613af17\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "78c1f3bd-485a-49ed-9350-eb01d791b271",
+    "name": "Trimble Agriculture Data Boundaries Imagery API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party integrators to exchange precision agriculture data between field devices and farm management platforms. Serves over 180 million customer acres globally. Access requires registration at the Trimble Ag Developer Network.\n\nContact Support:\n Email: ag_api@trimble.com",
+      "type": "text/plain"
+    }
+  }
+}

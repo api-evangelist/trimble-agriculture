@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trimble Agriculture Data Boundaries Farms API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Farms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Farms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all farms for an organization."
+        },
+        {
+          "info": {
+            "name": "Create Farm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new farm within an organization."
+        },
+        {
+          "info": {
+            "name": "Get Farm",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms/:farmId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific farm."
+        },
+        {
+          "info": {
+            "name": "Update Farm",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms/:farmId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a farm's details."
+        },
+        {
+          "info": {
+            "name": "Delete Farm",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/farms/:farmId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "farmId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a farm from an organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trimble Agriculture Data Boundaries Equipment Activities API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Equipment Activities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Equipment Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/equipmentactivities",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter activities starting after this time"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter activities ending before this time"
+              },
+              {
+                "name": "cropZoneId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by crop zone"
+              },
+              {
+                "name": "activityType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by activity type"
+              }
+            ]
+          },
+          "docs": "Returns equipment activity records (in-field jobs such as planting, fertilizing, spraying, or harvesting) created from precision ag displays."
+        },
+        {
+          "info": {
+            "name": "Get Equipment Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/equipmentactivities/:activityId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "activityId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details and as-applied data for a specific equipment activity."
+        },
+        {
+          "info": {
+            "name": "Get As-Applied Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0/organizations/:organizationId/equipmentactivities/:activityId/asapplied",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "activityId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Download format"
+              }
+            ]
+          },
+          "docs": "Download as-applied data for a specific equipment activity in a format suitable for third-party analysis or regulatory compliance."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

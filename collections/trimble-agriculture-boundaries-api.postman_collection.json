@@ -1,0 +1,150 @@
+{
+  "item": [
+    {
+      "id": "1770090d-c8eb-44ee-8ca9-d5cbc1f25d84",
+      "name": "Boundaries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b0bb65e3-087d-4ba8-a4cb-591fa97b3543",
+          "name": "List Boundaries",
+          "request": {
+            "name": "List Boundaries",
+            "description": {
+              "content": "Returns all field and crop zone boundaries for an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "boundaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fieldId",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c663d778-98b8-4c6c-bf1f-a41a6dbe1cd7",
+              "name": "List of boundaries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "boundaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fieldId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"26d05f65-0c99-f138-2aee-819258c5c0a2\",\n    \"fieldId\": \"9f074e02-65df-2ce7-5d46-501141b20b0b\",\n    \"cropZoneId\": \"156f6c13-ab20-9204-b4b9-7db1d9d059cc\",\n    \"geometry\": {\n      \"type\": \"LineString\",\n      \"coordinates\": {}\n    },\n    \"area\": 2006.3149017267579\n  },\n  {\n    \"id\": \"3eb04632-d61e-c430-d680-70375388002e\",\n    \"fieldId\": \"07803c39-4ad7-b310-b104-83ad15a59ef9\",\n    \"cropZoneId\": \"000aaa3d-0009-b2df-64be-a4718e612b05\",\n    \"geometry\": {\n      \"type\": \"Point\",\n      \"coordinates\": {}\n    },\n    \"area\": 9109.39954979836\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "295f5f16-1d52-4be1-9f24-7008cd318ad2",
+    "name": "Trimble Agriculture Data Boundaries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party integrators to exchange precision agriculture data between field devices and farm management platforms. Serves over 180 million customer acres globally. Access requires registration at the Trimble Ag Developer Network.\n\nContact Support:\n Email: ag_api@trimble.com",
+      "type": "text/plain"
+    }
+  }
+}

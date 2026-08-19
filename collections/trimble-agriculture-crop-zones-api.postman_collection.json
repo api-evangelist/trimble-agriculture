@@ -1,0 +1,404 @@
+{
+  "item": [
+    {
+      "id": "b40d21eb-9748-45d7-893b-9dd90830c137",
+      "name": "Crop Zones",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "639883b2-5564-4b72-b9d9-3092e409d226",
+          "name": "List Crop Zones",
+          "request": {
+            "name": "List Crop Zones",
+            "description": {
+              "content": "Returns crop zones for an organization. Crop zones organize crop information by field and season.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "cropzones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "season",
+                  "value": "<integer>",
+                  "description": "Filter by crop year/season"
+                },
+                {
+                  "disabled": false,
+                  "key": "farmId",
+                  "value": "<uuid>",
+                  "description": "Filter by farm"
+                },
+                {
+                  "disabled": false,
+                  "key": "fieldId",
+                  "value": "<uuid>",
+                  "description": "Filter by field"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66cc87b1-71ee-4c42-b198-a9e50c7ed451",
+              "name": "List of crop zones",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "cropzones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "season",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "farmId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "fieldId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"b4ca3e4f-915e-c047-88b5-87a80bf47662\",\n    \"fieldId\": \"73c19d97-2145-1353-6043-6703dfa20b74\",\n    \"season\": 9971,\n    \"farmId\": \"0ddac582-dcc3-c29c-fdbc-6973d173bb40\",\n    \"cropType\": \"string\",\n    \"variety\": \"string\",\n    \"area\": 5478.820529379662,\n    \"boundary\": {\n      \"type\": \"LineString\",\n      \"coordinates\": {}\n    }\n  },\n  {\n    \"id\": \"217718db-3e3a-5e7a-5acc-cadf6e5d4603\",\n    \"fieldId\": \"dff1a5e3-872d-0814-0bf0-fc66056f220e\",\n    \"season\": 8911,\n    \"farmId\": \"b0b280bd-e03a-4c17-64e3-cda1f5711cba\",\n    \"cropType\": \"string\",\n    \"variety\": \"string\",\n    \"area\": 6291.2207355452665,\n    \"boundary\": {\n      \"type\": \"LineString\",\n      \"coordinates\": {}\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c40fbcd-7a54-4c7a-9a91-5d4ffbb5931e",
+          "name": "Create Crop Zone",
+          "request": {
+            "name": "Create Crop Zone",
+            "description": {
+              "content": "Create a new crop zone for a field and season.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "cropzones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fieldId\": \"<uuid>\",\n  \"season\": \"<integer>\",\n  \"cropType\": \"<string>\",\n  \"variety\": \"<string>\",\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7caf0290-dcb8-4267-99fa-14847b4f7487",
+              "name": "Crop zone created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "cropzones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fieldId\": \"<uuid>\",\n  \"season\": \"<integer>\",\n  \"cropType\": \"<string>\",\n  \"variety\": \"<string>\",\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"28d09009-282a-9170-4b71-9f95d5f47301\",\n  \"fieldId\": \"10e1c8db-1a7c-f567-1cf7-863d2ad112fb\",\n  \"season\": 270,\n  \"farmId\": \"03b38640-a289-3858-8a95-f08ffeaa1e9b\",\n  \"cropType\": \"string\",\n  \"variety\": \"string\",\n  \"area\": 250.9034461384818,\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21ac493b-633a-4ed1-af63-15b3a6d1b0d0",
+          "name": "Get Crop Zone",
+          "request": {
+            "name": "Get Crop Zone",
+            "description": {
+              "content": "Retrieve details for a specific crop zone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "cropzones",
+                ":cropZoneId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "cropZoneId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cacfc816-ea5a-468b-855e-695c5c4dae76",
+              "name": "Crop zone details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "cropzones",
+                    ":cropZoneId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "cropZoneId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"28d09009-282a-9170-4b71-9f95d5f47301\",\n  \"fieldId\": \"10e1c8db-1a7c-f567-1cf7-863d2ad112fb\",\n  \"season\": 270,\n  \"farmId\": \"03b38640-a289-3858-8a95-f08ffeaa1e9b\",\n  \"cropType\": \"string\",\n  \"variety\": \"string\",\n  \"area\": 250.9034461384818,\n  \"boundary\": {\n    \"type\": \"<string>\",\n    \"coordinates\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5d9647fb-2c17-4449-aecb-07ac95d504ba",
+    "name": "Trimble Agriculture Data Boundaries Crop Zones API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party integrators to exchange precision agriculture data between field devices and farm management platforms. Serves over 180 million customer acres globally. Access requires registration at the Trimble Ag Developer Network.\n\nContact Support:\n Email: ag_api@trimble.com",
+      "type": "text/plain"
+    }
+  }
+}

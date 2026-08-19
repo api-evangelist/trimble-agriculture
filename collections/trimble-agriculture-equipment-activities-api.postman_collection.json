@@ -1,0 +1,423 @@
+{
+  "item": [
+    {
+      "id": "090e39bf-b9b0-473d-b160-8b527965195c",
+      "name": "Equipment Activities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "69238d45-f0e4-4ccc-9557-8087fecf20b2",
+          "name": "List Equipment Activities",
+          "request": {
+            "name": "List Equipment Activities",
+            "description": {
+              "content": "Returns equipment activity records (in-field jobs such as planting, fertilizing, spraying, or harvesting) created from precision ag displays.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "equipmentactivities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "Filter activities starting after this time"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "Filter activities ending before this time"
+                },
+                {
+                  "disabled": false,
+                  "key": "cropZoneId",
+                  "value": "<uuid>",
+                  "description": "Filter by crop zone"
+                },
+                {
+                  "disabled": false,
+                  "key": "activityType",
+                  "value": "<string>",
+                  "description": "Filter by activity type"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b5565369-3ff7-4955-9e03-dc5b6c0ae1e1",
+              "name": "List of equipment activities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "equipmentactivities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cropZoneId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "activityType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"3552f8d9-0b96-9f57-8d2d-8a5cb10b8b86\",\n    \"activityType\": \"Spraying\",\n    \"cropZoneId\": \"c65b30fe-9e62-6b36-69bd-559b5cddc3d6\",\n    \"operatorId\": \"e94c7540-ee96-0c76-946b-18a5bbe0a3c9\",\n    \"equipmentId\": \"79eef161-e66b-8c35-0138-0b8bbb23dea2\",\n    \"startTime\": \"2006-06-09T11:46:53.016Z\",\n    \"endTime\": \"2016-07-05T16:22:39.225Z\",\n    \"area\": 1438.8680997489555,\n    \"materials\": [\n      {\n        \"materialId\": \"6d85d663-ffcb-cbd8-eacf-61c3fc99b581\",\n        \"applicationRate\": 5481.197654494069,\n        \"unit\": \"string\"\n      },\n      {\n        \"materialId\": \"2fe3f58d-4f10-06fd-7901-15e5a36e6ec5\",\n        \"applicationRate\": 2095.060555109136,\n        \"unit\": \"string\"\n      }\n    ],\n    \"status\": \"InProgress\"\n  },\n  {\n    \"id\": \"8a3f30ac-8500-b5f0-06e8-608b3c03bfca\",\n    \"activityType\": \"Fertilizing\",\n    \"cropZoneId\": \"88a6f936-b0a8-4952-4406-4f5d16b8f31c\",\n    \"operatorId\": \"1d519909-2039-6e50-64f7-85f0004b1483\",\n    \"equipmentId\": \"01e48a0f-287a-a4f7-a19a-0179f252af90\",\n    \"startTime\": \"2002-11-25T07:55:49.311Z\",\n    \"endTime\": \"1957-06-28T00:14:55.118Z\",\n    \"area\": 7793.423327326015,\n    \"materials\": [\n      {\n        \"materialId\": \"00e65be3-92b1-55b1-f7c8-8b2313e5c3e3\",\n        \"applicationRate\": 9743.865061465372,\n        \"unit\": \"string\"\n      },\n      {\n        \"materialId\": \"70e942f8-f2b4-81b8-aeb8-57274e82df26\",\n        \"applicationRate\": 8633.107904741362,\n        \"unit\": \"string\"\n      }\n    ],\n    \"status\": \"InProgress\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3688a97e-713a-4f13-af70-1da9ccfb3985",
+          "name": "Get Equipment Activity",
+          "request": {
+            "name": "Get Equipment Activity",
+            "description": {
+              "content": "Retrieve details and as-applied data for a specific equipment activity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "equipmentactivities",
+                ":activityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "activityId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "afd63af8-aa0e-4fce-898a-8e28d0d9abcb",
+              "name": "Equipment activity details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "equipmentactivities",
+                    ":activityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e833f1a3-9633-a1bd-2040-7610fb7e172f\",\n  \"activityType\": \"Planting\",\n  \"cropZoneId\": \"fc9b8680-4cb7-3f70-1fe4-2d31179f82c0\",\n  \"operatorId\": \"335ced80-d5a2-55aa-c5d2-5e7f9639b6ec\",\n  \"equipmentId\": \"9c8b79f4-3906-dccf-6201-6b1ca0804ac1\",\n  \"startTime\": \"1985-05-14T16:38:28.718Z\",\n  \"endTime\": \"1990-06-08T23:52:24.999Z\",\n  \"area\": 8472.516251372144,\n  \"materials\": [\n    {\n      \"materialId\": \"46b89204-bf94-3993-0206-59e5c272dc75\",\n      \"applicationRate\": 3950.4929629305707,\n      \"unit\": \"string\"\n    },\n    {\n      \"materialId\": \"12ce07cc-b2bb-6cc9-2521-d88c6d5b5037\",\n      \"applicationRate\": 9582.527715327376,\n      \"unit\": \"string\"\n    }\n  ],\n  \"status\": \"Cancelled\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c9f3e17-7cca-42e6-bc3c-a818e8867ebf",
+          "name": "Get As-Applied Data",
+          "request": {
+            "name": "Get As-Applied Data",
+            "description": {
+              "content": "Download as-applied data for a specific equipment activity in a format suitable for third-party analysis or regulatory compliance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "equipmentactivities",
+                ":activityId",
+                "asapplied"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Download format"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "activityId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34dc3622-0b2e-446f-ad84-a200f6e03d05",
+              "name": "As-applied data download",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "equipmentactivities",
+                    ":activityId",
+                    "asapplied"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "activityId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activityId\": \"8cc5886c-b559-7f60-49ac-3213775097f3\",\n  \"format\": \"string\",\n  \"data\": {},\n  \"downloadUrl\": \"http://SLFqrhy.noxGbx,k6l.ySjEJtn-vgOBVoNK5pll.DmsC4+iFGTPr848,FDkq.nLL0i98vxF5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3912ebf3-4895-4f4c-b833-72de70cd9a13",
+    "name": "Trimble Agriculture Data Boundaries Equipment Activities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party integrators to exchange precision agriculture data between field devices and farm management platforms. Serves over 180 million customer acres globally. Access requires registration at the Trimble Ag Developer Network.\n\nContact Support:\n Email: ag_api@trimble.com",
+      "type": "text/plain"
+    }
+  }
+}

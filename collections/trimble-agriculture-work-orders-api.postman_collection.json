@@ -1,0 +1,519 @@
+{
+  "item": [
+    {
+      "id": "4a0b5146-fc20-44d2-934d-84b767d82402",
+      "name": "Work Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4a9a5297-af91-4541-a1a0-b0f14ebe8cca",
+          "name": "List Work Orders",
+          "request": {
+            "name": "List Work Orders",
+            "description": {
+              "content": "Returns work orders for an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "workorders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by work order status"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1806cbe-925c-4eea-bd3f-919a8550d9f8",
+              "name": "List of work orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "workorders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"f73eaa91-11bd-079b-9bb1-9d6a8cdb9023\",\n    \"title\": \"string\",\n    \"status\": \"Cancelled\",\n    \"description\": \"string\",\n    \"cropZoneId\": \"be2e86fb-5c1f-864e-40ea-a97aba502c43\",\n    \"assignedOperatorId\": \"081ae442-c4ca-8438-d8a7-8cad4de1ccd4\",\n    \"activityType\": \"string\",\n    \"scheduledDate\": \"1965-01-13\",\n    \"materials\": [\n      {\n        \"materialId\": \"645c0a39-5087-35dd-bc06-72c2860a7090\",\n        \"targetRate\": 2074.119977242085\n      },\n      {\n        \"materialId\": \"6cf9af19-3887-73c4-a82f-9057a2cea947\",\n        \"targetRate\": 2125.0808592170733\n      }\n    ]\n  },\n  {\n    \"id\": \"7f056098-931b-2417-3693-1d0b40db9da4\",\n    \"title\": \"string\",\n    \"status\": \"Planned\",\n    \"description\": \"string\",\n    \"cropZoneId\": \"a9183d4c-a889-e8fe-3784-46d41292a0bb\",\n    \"assignedOperatorId\": \"2b50cf74-b527-d85f-5370-17cdc7e755f2\",\n    \"activityType\": \"string\",\n    \"scheduledDate\": \"2016-05-24\",\n    \"materials\": [\n      {\n        \"materialId\": \"e72a23f9-70aa-9fe7-9698-0616d112c8d7\",\n        \"targetRate\": 4631.408200407533\n      },\n      {\n        \"materialId\": \"7c97f7a0-a3a9-c50f-5038-a9dc98f3caf3\",\n        \"targetRate\": 4472.530791327254\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "948510f9-89a6-4e14-a01f-06372f696014",
+          "name": "Create Work Order",
+          "request": {
+            "name": "Create Work Order",
+            "description": {
+              "content": "Create a work order to plan, assign, and communicate a job to farm equipment operators. Work orders can remotely preconfigure Precision-IQ Display tasks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "workorders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"cropZoneId\": \"<uuid>\",\n  \"activityType\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assignedOperatorId\": \"<uuid>\",\n  \"scheduledDate\": \"<date>\",\n  \"materials\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "54395ac8-5140-456c-b0d8-e1f8ba1de77f",
+              "name": "Work order created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "workorders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"cropZoneId\": \"<uuid>\",\n  \"activityType\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assignedOperatorId\": \"<uuid>\",\n  \"scheduledDate\": \"<date>\",\n  \"materials\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e958c9cf-7270-9ec2-a04c-30c7385aa487\",\n  \"title\": \"string\",\n  \"status\": \"Cancelled\",\n  \"description\": \"string\",\n  \"cropZoneId\": \"6bde6440-d4dd-e863-e0fc-17cfdaeefa95\",\n  \"assignedOperatorId\": \"65f5ad3d-b116-4e81-24f7-f69b28057a5b\",\n  \"activityType\": \"string\",\n  \"scheduledDate\": \"2011-12-24\",\n  \"materials\": [\n    {\n      \"materialId\": \"407cfedc-5957-fdd0-426d-01dee4a84632\",\n      \"targetRate\": 1143.5302258888069\n    },\n    {\n      \"materialId\": \"5eb00322-adbd-46e8-6261-3ad9930221cd\",\n      \"targetRate\": 9150.29919536235\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5663d9a9-ff98-457e-8091-df8f2d732846",
+          "name": "Get Work Order",
+          "request": {
+            "name": "Get Work Order",
+            "description": {
+              "content": "Retrieve details for a specific work order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "workorders",
+                ":workOrderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workOrderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0f676d3-1d52-4182-a2c5-9f1c7fa0c2a1",
+              "name": "Work order details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "workorders",
+                    ":workOrderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workOrderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e958c9cf-7270-9ec2-a04c-30c7385aa487\",\n  \"title\": \"string\",\n  \"status\": \"Cancelled\",\n  \"description\": \"string\",\n  \"cropZoneId\": \"6bde6440-d4dd-e863-e0fc-17cfdaeefa95\",\n  \"assignedOperatorId\": \"65f5ad3d-b116-4e81-24f7-f69b28057a5b\",\n  \"activityType\": \"string\",\n  \"scheduledDate\": \"2011-12-24\",\n  \"materials\": [\n    {\n      \"materialId\": \"407cfedc-5957-fdd0-426d-01dee4a84632\",\n      \"targetRate\": 1143.5302258888069\n    },\n    {\n      \"materialId\": \"5eb00322-adbd-46e8-6261-3ad9930221cd\",\n      \"targetRate\": 9150.29919536235\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf584b78-4e4b-4f65-bde1-2840af705697",
+          "name": "Update Work Order",
+          "request": {
+            "name": "Update Work Order",
+            "description": {
+              "content": "Update a work order's status or details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":organizationId",
+                "workorders",
+                ":workOrderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "organizationId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workOrderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"cropZoneId\": \"<uuid>\",\n  \"activityType\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assignedOperatorId\": \"<uuid>\",\n  \"scheduledDate\": \"<date>\",\n  \"materials\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9e985aef-c98b-43d2-8c35-a0bd3c48a4f4",
+              "name": "Work order updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":organizationId",
+                    "workorders",
+                    ":workOrderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "organizationId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workOrderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"cropZoneId\": \"<uuid>\",\n  \"activityType\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assignedOperatorId\": \"<uuid>\",\n  \"scheduledDate\": \"<date>\",\n  \"materials\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e958c9cf-7270-9ec2-a04c-30c7385aa487\",\n  \"title\": \"string\",\n  \"status\": \"Cancelled\",\n  \"description\": \"string\",\n  \"cropZoneId\": \"6bde6440-d4dd-e863-e0fc-17cfdaeefa95\",\n  \"assignedOperatorId\": \"65f5ad3d-b116-4e81-24f7-f69b28057a5b\",\n  \"activityType\": \"string\",\n  \"scheduledDate\": \"2011-12-24\",\n  \"materials\": [\n    {\n      \"materialId\": \"407cfedc-5957-fdd0-426d-01dee4a84632\",\n      \"targetRate\": 1143.5302258888069\n    },\n    {\n      \"materialId\": \"5eb00322-adbd-46e8-6261-3ad9930221cd\",\n      \"targetRate\": 9150.29919536235\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloud.api.trimble.com/Trimble-Ag-Software/externalApi/3.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9a0e6c3f-4f8c-4090-b5a1-9813c5214734",
+    "name": "Trimble Agriculture Data Boundaries Work Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party integrators to exchange precision agriculture data between field devices and farm management platforms. Serves over 180 million customer acres globally. Access requires registration at the Trimble Ag Developer Network.\n\nContact Support:\n Email: ag_api@trimble.com",
+      "type": "text/plain"
+    }
+  }
+}
