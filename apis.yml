@@ -150,6 +150,8 @@ apis:
   description: The Organizations API from Trimble Agriculture — 2 operation(s) for organizations.
   humanURL: https://agdeveloper.trimble.com/api-docs
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
