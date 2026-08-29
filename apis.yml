@@ -228,6 +228,9 @@ solutions:
   - Large production farms building multi-vendor data workflows
   - Regulatory compliance and farm management platforms
 common:
+  - type: CapabilityMap
+    url: capabilities/trimble-agriculture-capability-edges.yml
+    name: Trimble Agriculture Business Capability Map
   - type: AgenticAccess
     url: agentic-access/trimble-agriculture-agentic-access.yml
   - type: TrustCenter

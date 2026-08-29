@@ -1,0 +1,46 @@
+slug: trimble-agriculture
+provider: Trimble Agriculture
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Agriculture & Food Production
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Fields
+  spec_file: trimble-agriculture-fields-api-openapi.yml
+  capability_id: BC-3540.20
+  capability_id_l1: BC-3540
+  capability_name: Field and Parcel Management
+  confidence: 0.85
+  evidence: 'GET /organizations/{organizationId}/farms/{farmId}/fields  listFields  List Fields; schemas:
+    GeoJsonGeometry, FieldInput, Field'
+  reason: Full lifecycle management of geospatial field records nested under a farm is precisely Field
+    and Parcel Management within Farm Land & Asset Management.
+- tag: Boundaries
+  spec_file: trimble-agriculture-boundaries-api-openapi.yml
+  capability_id: BC-3540.20
+  capability_id_l1: BC-3540
+  capability_name: Field and Parcel Management
+  confidence: 0.8
+  evidence: 'GET /organizations/{organizationId}/boundaries  listBoundaries  List Boundaries; schemas:
+    GeoJsonGeometry, Boundary'
+  reason: Retrieval of geospatial field boundary records for a farming organisation matches Field and
+    Parcel Management (field boundary records) within Farm Land & Asset Management.
+- tag: Equipment Activities
+  spec_file: trimble-agriculture-equipment-activities-api-openapi.yml
+  capability_id: BC-3540.30
+  capability_id_l1: BC-3540
+  capability_name: Farm Equipment Management
+  confidence: 0.7
+  evidence: 'GET /organizations/{organizationId}/equipmentactivities/{activityId}/asapplied  getAsAppliedData  Get
+    As-Applied Data; schemas: EquipmentActivity, AsAppliedData'
+  reason: Machine activity records and as-applied telemetry from field devices correspond to Farm Equipment
+    Management (machinery operations, ISOBUS telemetry); the as-applied records also touch application
+    recording, so confidence is tempered.
