@@ -27,6 +27,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "trimble-agriculture-boundaries-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "trimble-agriculture-crop-zones-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "trimble-agriculture-equipment-activities-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "trimble-agriculture-farms-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "trimble-agriculture-fields-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "trimble-agriculture-imagery-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "trimble-agriculture-materials-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "trimble-agriculture-organizations-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "trimble-agriculture-prescriptions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "trimble-agriculture-work-orders-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
