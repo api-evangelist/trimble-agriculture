@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Trimble Agriculture Data Boundaries Fields API
+  title: Trimble Agriculture Data Fields API
   description: The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party integrators to exchange precision agriculture data between field devices and farm management platforms. Serves over 180 million customer acres globally. Access requires registration at the Trimble Ag Developer Network.
   version: 3.0.0
   contact:
@@ -176,6 +176,18 @@ paths:
           description: Field deleted
 components:
   schemas:
+    FieldInput:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        area:
+          type: number
+          format: float
+        boundary:
+          $ref: '#/components/schemas/GeoJsonGeometry'
     GeoJsonGeometry:
       type: object
       description: GeoJSON geometry object
@@ -189,18 +201,6 @@ components:
           - LineString
         coordinates:
           description: GeoJSON coordinates array
-    FieldInput:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        area:
-          type: number
-          format: float
-        boundary:
-          $ref: '#/components/schemas/GeoJsonGeometry'
     Field:
       type: object
       required:

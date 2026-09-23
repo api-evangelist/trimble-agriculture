@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Trimble Agriculture Data Boundaries Prescriptions API
+  title: Trimble Agriculture Data Prescriptions API
   description: The Trimble Agriculture Data API (PTxAg FarmENGAGE API) provides REST endpoints for managing farms, fields, crop zones, boundaries, equipment activities, work orders, prescriptions, materials, and imagery. Enables third-party integrators to exchange precision agriculture data between field devices and farm management platforms. Serves over 180 million customer acres globally. Access requires registration at the Trimble Ag Developer Network.
   version: 3.0.0
   contact:
@@ -120,6 +120,26 @@ paths:
           description: Prescription deleted
 components:
   schemas:
+    PrescriptionInput:
+      type: object
+      required:
+      - name
+      - cropZoneId
+      - materialType
+      properties:
+        name:
+          type: string
+        cropZoneId:
+          type: string
+          format: uuid
+        materialType:
+          type: string
+          enum:
+          - Seed
+          - Fertilizer
+          - Chemical
+        prescription:
+          description: GeoJSON variable-rate prescription data
     Prescription:
       type: object
       required:
@@ -153,26 +173,6 @@ components:
           - Active
           - Sent
           - Archived
-    PrescriptionInput:
-      type: object
-      required:
-      - name
-      - cropZoneId
-      - materialType
-      properties:
-        name:
-          type: string
-        cropZoneId:
-          type: string
-          format: uuid
-        materialType:
-          type: string
-          enum:
-          - Seed
-          - Fertilizer
-          - Chemical
-        prescription:
-          description: GeoJSON variable-rate prescription data
   securitySchemes:
     bearerAuth:
       type: http

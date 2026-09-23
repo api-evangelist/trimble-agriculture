@@ -1,16 +1,7 @@
 {
   "provider": "trimble-agriculture",
   "sources": [
-    "trimble-agriculture-boundaries-api-openapi.yml",
-    "trimble-agriculture-crop-zones-api-openapi.yml",
-    "trimble-agriculture-equipment-activities-api-openapi.yml",
-    "trimble-agriculture-farms-api-openapi.yml",
-    "trimble-agriculture-fields-api-openapi.yml",
-    "trimble-agriculture-imagery-api-openapi.yml",
-    "trimble-agriculture-materials-api-openapi.yml",
-    "trimble-agriculture-organizations-api-openapi.yml",
-    "trimble-agriculture-prescriptions-api-openapi.yml",
-    "trimble-agriculture-work-orders-api-openapi.yml"
+    "_original/trimble-agriculture-openapi.yml"
   ],
   "outputs": [
     "trimble-agriculture-boundaries-api-openapi.yml",
@@ -28,17 +19,30 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "trimble-agriculture-boundaries-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "trimble-agriculture-crop-zones-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "trimble-agriculture-equipment-activities-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "trimble-agriculture-farms-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "trimble-agriculture-fields-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "trimble-agriculture-imagery-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "trimble-agriculture-materials-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "trimble-agriculture-organizations-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "trimble-agriculture-prescriptions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "trimble-agriculture-work-orders-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "trimble-agriculture-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "trimble-agriculture-openapi.yml: declared missing tag: Boundaries",
+    "trimble-agriculture-openapi.yml: declared missing tag: Crop Zones",
+    "trimble-agriculture-openapi.yml: declared missing tag: Equipment Activities",
+    "trimble-agriculture-openapi.yml: declared missing tag: Farms",
+    "trimble-agriculture-openapi.yml: declared missing tag: Fields",
+    "trimble-agriculture-openapi.yml: declared missing tag: Imagery",
+    "trimble-agriculture-openapi.yml: declared missing tag: Materials",
+    "trimble-agriculture-openapi.yml: declared missing tag: Organizations",
+    "trimble-agriculture-openapi.yml: declared missing tag: Prescriptions",
+    "trimble-agriculture-openapi.yml: declared missing tag: Work Orders",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "trimble-agriculture-boundaries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-agriculture-crop-zones-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-agriculture-equipment-activities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-agriculture-farms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-agriculture-fields-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-agriculture-imagery-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-agriculture-materials-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-agriculture-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-agriculture-prescriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-agriculture-work-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
