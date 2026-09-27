@@ -176,18 +176,6 @@ paths:
           description: Field deleted
 components:
   schemas:
-    FieldInput:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        area:
-          type: number
-          format: float
-        boundary:
-          $ref: '#/components/schemas/GeoJsonGeometry'
     GeoJsonGeometry:
       type: object
       description: GeoJSON geometry object
@@ -223,6 +211,18 @@ components:
         boundary:
           $ref: '#/components/schemas/GeoJsonGeometry'
           description: Field boundary as GeoJSON geometry
+    FieldInput:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        area:
+          type: number
+          format: float
+        boundary:
+          $ref: '#/components/schemas/GeoJsonGeometry'
   securitySchemes:
     bearerAuth:
       type: http

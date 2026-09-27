@@ -109,37 +109,6 @@ paths:
                 $ref: '#/components/schemas/CropZone'
 components:
   schemas:
-    CropZoneInput:
-      type: object
-      required:
-      - fieldId
-      - season
-      - cropType
-      properties:
-        fieldId:
-          type: string
-          format: uuid
-        season:
-          type: integer
-        cropType:
-          type: string
-        variety:
-          type: string
-        boundary:
-          $ref: '#/components/schemas/GeoJsonGeometry'
-    GeoJsonGeometry:
-      type: object
-      description: GeoJSON geometry object
-      properties:
-        type:
-          type: string
-          enum:
-          - Point
-          - Polygon
-          - MultiPolygon
-          - LineString
-        coordinates:
-          description: GeoJSON coordinates array
     CropZone:
       type: object
       required:
@@ -171,6 +140,37 @@ components:
           description: Crop zone area in hectares
         boundary:
           $ref: '#/components/schemas/GeoJsonGeometry'
+    CropZoneInput:
+      type: object
+      required:
+      - fieldId
+      - season
+      - cropType
+      properties:
+        fieldId:
+          type: string
+          format: uuid
+        season:
+          type: integer
+        cropType:
+          type: string
+        variety:
+          type: string
+        boundary:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+    GeoJsonGeometry:
+      type: object
+      description: GeoJSON geometry object
+      properties:
+        type:
+          type: string
+          enum:
+          - Point
+          - Polygon
+          - MultiPolygon
+          - LineString
+        coordinates:
+          description: GeoJSON coordinates array
   securitySchemes:
     bearerAuth:
       type: http
