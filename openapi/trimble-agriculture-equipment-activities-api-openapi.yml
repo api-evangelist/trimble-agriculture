@@ -132,6 +132,20 @@ paths:
                 $ref: '#/components/schemas/AsAppliedData'
 components:
   schemas:
+    AsAppliedData:
+      type: object
+      properties:
+        activityId:
+          type: string
+          format: uuid
+        format:
+          type: string
+        data:
+          description: GeoJSON or other format data for as-applied records
+        downloadUrl:
+          type: string
+          format: uri
+          description: Presigned URL to download the full dataset
     EquipmentActivity:
       type: object
       required:
@@ -189,20 +203,6 @@ components:
           - InProgress
           - Completed
           - Cancelled
-    AsAppliedData:
-      type: object
-      properties:
-        activityId:
-          type: string
-          format: uuid
-        format:
-          type: string
-        data:
-          description: GeoJSON or other format data for as-applied records
-        downloadUrl:
-          type: string
-          format: uri
-          description: Presigned URL to download the full dataset
   securitySchemes:
     bearerAuth:
       type: http

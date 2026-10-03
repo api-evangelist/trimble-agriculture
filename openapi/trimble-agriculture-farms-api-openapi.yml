@@ -152,21 +152,6 @@ paths:
           description: Farm deleted
 components:
   schemas:
-    FarmInput:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        address:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
     Farm:
       type: object
       required:
@@ -182,6 +167,21 @@ components:
         organizationId:
           type: string
           format: uuid
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+    FarmInput:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
         address:
           type: string
         city:

@@ -176,19 +176,6 @@ paths:
           description: Field deleted
 components:
   schemas:
-    GeoJsonGeometry:
-      type: object
-      description: GeoJSON geometry object
-      properties:
-        type:
-          type: string
-          enum:
-          - Point
-          - Polygon
-          - MultiPolygon
-          - LineString
-        coordinates:
-          description: GeoJSON coordinates array
     Field:
       type: object
       required:
@@ -211,6 +198,19 @@ components:
         boundary:
           $ref: '#/components/schemas/GeoJsonGeometry'
           description: Field boundary as GeoJSON geometry
+    GeoJsonGeometry:
+      type: object
+      description: GeoJSON geometry object
+      properties:
+        type:
+          type: string
+          enum:
+          - Point
+          - Polygon
+          - MultiPolygon
+          - LineString
+        coordinates:
+          description: GeoJSON coordinates array
     FieldInput:
       type: object
       required:

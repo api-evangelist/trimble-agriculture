@@ -44,6 +44,19 @@ paths:
                   $ref: '#/components/schemas/Boundary'
 components:
   schemas:
+    GeoJsonGeometry:
+      type: object
+      description: GeoJSON geometry object
+      properties:
+        type:
+          type: string
+          enum:
+          - Point
+          - Polygon
+          - MultiPolygon
+          - LineString
+        coordinates:
+          description: GeoJSON coordinates array
     Boundary:
       type: object
       required:
@@ -64,19 +77,6 @@ components:
           type: number
           format: float
           description: Boundary area in hectares
-    GeoJsonGeometry:
-      type: object
-      description: GeoJSON geometry object
-      properties:
-        type:
-          type: string
-          enum:
-          - Point
-          - Polygon
-          - MultiPolygon
-          - LineString
-        coordinates:
-          description: GeoJSON coordinates array
   securitySchemes:
     bearerAuth:
       type: http

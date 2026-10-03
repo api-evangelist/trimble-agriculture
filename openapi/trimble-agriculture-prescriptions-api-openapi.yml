@@ -120,26 +120,6 @@ paths:
           description: Prescription deleted
 components:
   schemas:
-    PrescriptionInput:
-      type: object
-      required:
-      - name
-      - cropZoneId
-      - materialType
-      properties:
-        name:
-          type: string
-        cropZoneId:
-          type: string
-          format: uuid
-        materialType:
-          type: string
-          enum:
-          - Seed
-          - Fertilizer
-          - Chemical
-        prescription:
-          description: GeoJSON variable-rate prescription data
     Prescription:
       type: object
       required:
@@ -173,6 +153,26 @@ components:
           - Active
           - Sent
           - Archived
+    PrescriptionInput:
+      type: object
+      required:
+      - name
+      - cropZoneId
+      - materialType
+      properties:
+        name:
+          type: string
+        cropZoneId:
+          type: string
+          format: uuid
+        materialType:
+          type: string
+          enum:
+          - Seed
+          - Fertilizer
+          - Chemical
+        prescription:
+          description: GeoJSON variable-rate prescription data
   securitySchemes:
     bearerAuth:
       type: http

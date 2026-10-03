@@ -140,6 +140,19 @@ components:
           description: Crop zone area in hectares
         boundary:
           $ref: '#/components/schemas/GeoJsonGeometry'
+    GeoJsonGeometry:
+      type: object
+      description: GeoJSON geometry object
+      properties:
+        type:
+          type: string
+          enum:
+          - Point
+          - Polygon
+          - MultiPolygon
+          - LineString
+        coordinates:
+          description: GeoJSON coordinates array
     CropZoneInput:
       type: object
       required:
@@ -158,19 +171,6 @@ components:
           type: string
         boundary:
           $ref: '#/components/schemas/GeoJsonGeometry'
-    GeoJsonGeometry:
-      type: object
-      description: GeoJSON geometry object
-      properties:
-        type:
-          type: string
-          enum:
-          - Point
-          - Polygon
-          - MultiPolygon
-          - LineString
-        coordinates:
-          description: GeoJSON coordinates array
   securitySchemes:
     bearerAuth:
       type: http

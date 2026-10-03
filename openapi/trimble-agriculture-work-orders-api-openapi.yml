@@ -135,32 +135,6 @@ paths:
                 $ref: '#/components/schemas/WorkOrder'
 components:
   schemas:
-    WorkOrderInput:
-      type: object
-      required:
-      - title
-      - cropZoneId
-      - activityType
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        cropZoneId:
-          type: string
-          format: uuid
-        assignedOperatorId:
-          type: string
-          format: uuid
-        activityType:
-          type: string
-        scheduledDate:
-          type: string
-          format: date
-        materials:
-          type: array
-          items:
-            type: object
     WorkOrder:
       type: object
       required:
@@ -206,6 +180,32 @@ components:
                 format: uuid
               targetRate:
                 type: number
+    WorkOrderInput:
+      type: object
+      required:
+      - title
+      - cropZoneId
+      - activityType
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        cropZoneId:
+          type: string
+          format: uuid
+        assignedOperatorId:
+          type: string
+          format: uuid
+        activityType:
+          type: string
+        scheduledDate:
+          type: string
+          format: date
+        materials:
+          type: array
+          items:
+            type: object
   securitySchemes:
     bearerAuth:
       type: http
