@@ -176,28 +176,6 @@ paths:
           description: Field deleted
 components:
   schemas:
-    Field:
-      type: object
-      required:
-      - id
-      - name
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: Field name
-        farmId:
-          type: string
-          format: uuid
-        area:
-          type: number
-          format: float
-          description: Field area in hectares
-        boundary:
-          $ref: '#/components/schemas/GeoJsonGeometry'
-          description: Field boundary as GeoJSON geometry
     GeoJsonGeometry:
       type: object
       description: GeoJSON geometry object
@@ -223,6 +201,28 @@ components:
           format: float
         boundary:
           $ref: '#/components/schemas/GeoJsonGeometry'
+    Field:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: Field name
+        farmId:
+          type: string
+          format: uuid
+        area:
+          type: number
+          format: float
+          description: Field area in hectares
+        boundary:
+          $ref: '#/components/schemas/GeoJsonGeometry'
+          description: Field boundary as GeoJSON geometry
   securitySchemes:
     bearerAuth:
       type: http

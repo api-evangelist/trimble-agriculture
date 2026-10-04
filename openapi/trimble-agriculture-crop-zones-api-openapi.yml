@@ -109,6 +109,24 @@ paths:
                 $ref: '#/components/schemas/CropZone'
 components:
   schemas:
+    CropZoneInput:
+      type: object
+      required:
+      - fieldId
+      - season
+      - cropType
+      properties:
+        fieldId:
+          type: string
+          format: uuid
+        season:
+          type: integer
+        cropType:
+          type: string
+        variety:
+          type: string
+        boundary:
+          $ref: '#/components/schemas/GeoJsonGeometry'
     CropZone:
       type: object
       required:
@@ -153,24 +171,6 @@ components:
           - LineString
         coordinates:
           description: GeoJSON coordinates array
-    CropZoneInput:
-      type: object
-      required:
-      - fieldId
-      - season
-      - cropType
-      properties:
-        fieldId:
-          type: string
-          format: uuid
-        season:
-          type: integer
-        cropType:
-          type: string
-        variety:
-          type: string
-        boundary:
-          $ref: '#/components/schemas/GeoJsonGeometry'
   securitySchemes:
     bearerAuth:
       type: http
