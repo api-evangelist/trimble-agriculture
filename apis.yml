@@ -231,6 +231,12 @@ solutions:
   - Large production farms building multi-vendor data workflows
   - Regulatory compliance and farm management platforms
 common:
+  - type: Plans
+    url: plans/trimble-agriculture-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/trimble-agriculture-rate-limits.yml
+  - type: FinOps
+    url: finops/trimble-agriculture-finops.yml
   - type: CapabilityMap
     url: capabilities/trimble-agriculture-capability-edges.yml
     name: Trimble Agriculture Business Capability Map
